@@ -40,10 +40,19 @@ class Validation:
 
 
 def _sentences(text: str) -> list[str]:
-    found = [s.strip() for s in _SENTENCE.findall(text)]
-    if found:
-        return [s for s in found if s]
-    return [text.strip()] if text.strip() else []
+    out: list[str] = []
+    consumed = 0
+    for m in _SENTENCE.finditer(text):
+        piece = m.group(0).strip()
+        if piece:
+            out.append(piece)
+        consumed = m.end()
+    # a trailing fragment with no closing punctuation is still a sentence —
+    # losing it silently would be the validator deleting good text
+    rest = text[consumed:].strip()
+    if rest:
+        out.append(rest)
+    return out
 
 
 def _cosine(a: np.ndarray, b: np.ndarray) -> float:
