@@ -43,6 +43,14 @@ Running log of judgment calls and anything that needs YOUR input. Newest last.
    cloud project for the real deployment, create it at supabase.com and swap
    the four values in `.env` — nothing else changes.
 
+## Worth knowing
+
+- The repo sits inside OneDrive (`Documents\vetserve_katy`), so OneDrive will
+  try to sync `node_modules/`, `.venv/`, and `.next/` — thousands of small
+  files. If sync starts thrashing, either mark the repo folder "Always keep
+  on this device → Free up space excluded" / pause syncing for it, or move
+  the repo outside OneDrive (nothing in the code cares about the path).
+
 ## Decisions made (and why)
 
 - **Repo location:** built in `Documents/vetserve_katy`, NOT inside
