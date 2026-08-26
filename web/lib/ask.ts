@@ -39,7 +39,8 @@ export interface AskCallbacks {
   onRetrieval?: (citations: Citation[]) => void;
   onToken?: (text: string) => void;
   onFinal: (payload: FinalAnswer) => void;
-  onError: (message: string) => void;
+  /** may be async (e.g. a non-streaming retry); askStreaming awaits it */
+  onError: (message: string) => void | Promise<void>;
 }
 
 export async function askStreaming(
@@ -56,11 +57,11 @@ export async function askStreaming(
       signal,
     });
   } catch {
-    callbacks.onError("Couldn't reach VetGuide. Check that the API is running, then try again.");
+    await callbacks.onError("Couldn't reach VetGuide. Check that the API is running, then try again.");
     return;
   }
   if (!resp.ok || !resp.body) {
-    callbacks.onError("VetGuide had a problem answering. Try again in a moment.");
+    await callbacks.onError("VetGuide had a problem answering. Try again in a moment.");
     return;
   }
 
@@ -106,12 +107,24 @@ export async function askStreaming(
     }
     if (buffer.trim()) handleFrame(buffer);
   } catch {
-    if (!sawFinal) callbacks.onError("The connection dropped mid-answer. Try again.");
+    if (!sawFinal) await callbacks.onError("The connection dropped mid-answer. Try again.");
     return;
   }
   if (!sawFinal) {
-    callbacks.onError("VetGuide didn't finish answering. Try again.");
+    await callbacks.onError("VetGuide didn't finish answering. Try again.");
   }
+}
+
+/** Non-streaming fallback: one POST, full validated payload. Used when the
+ * SSE stream drops mid-answer (flaky network, throttled tab). */
+export async function askOnce(question: string): Promise<FinalAnswer> {
+  const resp = await fetch(`${API_URL}/ask`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question, stream: false }),
+  });
+  if (!resp.ok) throw new Error(`API returned ${resp.status}`);
+  return resp.json();
 }
 
 export async function sendFeedback(question: string, answer: string, helpful: boolean) {

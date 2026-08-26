@@ -1,7 +1,8 @@
-from fastapi import APIRouter
+import httpx
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from ..db import anon_client
+from ..config import get_settings
 
 router = APIRouter()
 
@@ -14,9 +15,21 @@ class FeedbackRequest(BaseModel):
 
 @router.post("/feedback")
 async def leave_feedback(req: FeedbackRequest):
-    # anon client on purpose: the RLS policy only allows INSERT, so this path
-    # can never read or modify anything even if the payload is hostile
-    anon_client().table("feedback").insert(
-        {"question": req.question, "answer": req.answer, "helpful": req.helpful}
-    ).execute()
+    # deliberate anon-role, return=minimal insert straight at PostgREST: the
+    # feedback role can WRITE a row but can never read one back, and the
+    # supabase-py client doesn't reliably send the minimal-return preference
+    s = get_settings()
+    async with httpx.AsyncClient(timeout=10.0) as client:
+        resp = await client.post(
+            f"{s.supabase_url.rstrip('/')}/rest/v1/feedback",
+            headers={
+                "apikey": s.supabase_anon_key,
+                "Authorization": f"Bearer {s.supabase_anon_key}",
+                "Content-Type": "application/json",
+                "Prefer": "return=minimal",
+            },
+            json={"question": req.question, "answer": req.answer, "helpful": req.helpful},
+        )
+    if resp.status_code != 201:
+        raise HTTPException(status_code=502, detail="Couldn't save the feedback.")
     return {"ok": True}

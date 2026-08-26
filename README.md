@@ -181,6 +181,9 @@ skipped even by a hand-crafted PostgREST request.
 - Verification is lightweight (self-attest + admin approval + school email
   domain); it deters casual misuse, not a determined bad actor.
 - English only, for now.
+- On a laptop **without a GPU**, a 7B model answers in about a minute or two
+  (CPU prompt processing dominates). With any recent GPU it's seconds. For a
+  fast live demo on CPU-only hardware, use the `LLM_PROVIDER=groq` fallback.
 
 ## Responsible use
 

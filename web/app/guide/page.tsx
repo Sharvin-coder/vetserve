@@ -9,7 +9,7 @@ import { Exchange, ConfidenceLine, type ExchangeData } from "@/components/guide/
 import { HelpRail } from "@/components/guide/HelpRail";
 import { Button } from "@/components/ui/Button";
 import { SourceCard } from "@/components/ui/SourceCard";
-import { askStreaming, type Citation } from "@/lib/ask";
+import { askOnce, askStreaming, type Citation } from "@/lib/ask";
 
 const STARTERS = [
   "Am I eligible for the Hazlewood Act?",
@@ -77,7 +77,15 @@ function GuideInner() {
           return copy;
         }),
       onFinal: (payload) => patchLast({ phase: "done", final: payload }),
-      onError: (message) => patchLast({ phase: "error", error: message }),
+      onError: async (message) => {
+        // stream dropped — ask once more without streaming before giving up
+        try {
+          const payload = await askOnce(q);
+          patchLast({ phase: "done", final: payload });
+        } catch {
+          patchLast({ phase: "error", error: message });
+        }
+      },
     });
     setBusy(false);
   }
@@ -138,7 +146,7 @@ function GuideInner() {
               id="guide-input"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about benefits, health care, education…"
+              placeholder="Ask about benefits, health care, education"
               className="min-h-[52px] w-full rounded-control border border-line bg-surface px-4 text-base text-ink placeholder:text-ink-muted"
             />
             <Button type="submit" disabled={busy || !input.trim()} className="min-h-[52px] shrink-0">
@@ -146,7 +154,7 @@ function GuideInner() {
             </Button>
           </div>
           <p className="mt-2 text-sm text-ink-muted">
-            VetGuide reads official documents; it isn't official advice. For decisions about your
+            VetGuide reads official documents; it isn&rsquo;t official advice. For decisions about your
             benefits, talk to a Veterans Service Officer.
           </p>
         </form>

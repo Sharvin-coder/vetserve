@@ -60,7 +60,17 @@ export function Exchange({
         </div>
       )}
 
-      {data.phase === "streaming" && <StreamingText text={data.streamText} />}
+      {data.phase === "streaming" &&
+        (data.streamText ? (
+          <StreamingText text={data.streamText} />
+        ) : (
+          <div aria-label="Reading the sources">
+            <p className="mb-2 text-sm text-ink-muted">
+              Found the sources — reading them now…
+            </p>
+            <SkeletonText lines={2} />
+          </div>
+        ))}
 
       {data.phase === "error" && (
         <p className="max-w-measure text-base text-danger">{data.error}</p>
