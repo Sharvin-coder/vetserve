@@ -16,6 +16,7 @@ dependencies = [
     "numpy>=1.26",
     "sse-starlette>=2.1",
     "reportlab>=4.2",
+    "pydantic[email]>=2.13.4",
 ]
 
 [dependency-groups]
@@ -30,3 +31,5 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
+# B008: FastAPI's `Depends(...)` in defaults is the framework's own idiom
+ignore = ["B008"]

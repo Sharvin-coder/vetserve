@@ -13,6 +13,23 @@ from .validate import validate_answer
 
 log = logging.getLogger("vetguide")
 
+
+def _log_dropped(question: str, dropped: list[dict[str, str]]) -> None:
+    """Persist validator-removed sentences for the admin screen. Best-effort:
+    a logging failure must never break an answer."""
+    if not dropped:
+        return
+    for d in dropped:
+        log.warning("dropped sentence: %s | %s", d["reason"], d["sentence"])
+    try:
+        from ..db import service_client
+
+        service_client().table("vetguide_dropped").insert(
+            [{"question": question, **d} for d in dropped]
+        ).execute()
+    except Exception:  # noqa: BLE001
+        log.exception("could not persist dropped sentences")
+
 NO_ANSWER_TEXT = (
     "I couldn't find this in the official sources I have. "
     "A person at the office below can help you directly."
@@ -84,11 +101,10 @@ async def answer_question(question: str) -> dict[str, Any]:
     if raw == "NO_ANSWER" or validation is None or not validation.answer:
         return _no_answer(question, chunks)
 
-    if validation.dropped:
-        for d in validation.dropped:
-            log.warning("dropped sentence: %(reason)s | %(sentence)s", d)
+    _log_dropped(question, validation.dropped)
 
     confidence = (
+
         "high"
         if chunks[0].rerank_score >= HIGH_THRESHOLD and len(validation.used_citations) >= 2
         else "medium"
@@ -149,6 +165,7 @@ async def stream_answer(question: str) -> AsyncIterator[dict[str, Any]]:
         yield {"event": "final", "data": _no_answer(question, chunks)}
         return
 
+    _log_dropped(question, validation.dropped)
     confidence = (
         "high"
         if chunks[0].rerank_score >= HIGH_THRESHOLD and len(validation.used_citations) >= 2
