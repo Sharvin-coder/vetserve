@@ -3,7 +3,8 @@
 // VetGuide — Screen 2. Conversation main column, large input pinned to the
 // bottom, source rail on the right (stacked below on mobile).
 
-import { useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Exchange, ConfidenceLine, type ExchangeData } from "@/components/guide/Exchange";
 import { HelpRail } from "@/components/guide/HelpRail";
 import { Button } from "@/components/ui/Button";
@@ -19,13 +20,25 @@ const STARTERS = [
   "What are the hours of the Katy VA clinic?",
 ];
 
-export default function GuidePage() {
+function GuideInner() {
+  const searchParams = useSearchParams();
   const [exchanges, setExchanges] = useState<ExchangeData[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [activeCitation, setActiveCitation] = useState<number | null>(null);
   const nextId = useRef(1);
   const listRef = useRef<HTMLDivElement>(null);
+
+  // a question handed over from the landing page (?q=...) asks itself once
+  const askedFromUrl = useRef(false);
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q && !askedFromUrl.current) {
+      askedFromUrl.current = true;
+      ask(q);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   const last = exchanges[exchanges.length - 1] ?? null;
   const lastFinal = last?.phase === "done" ? last.final : null;
@@ -163,5 +176,13 @@ export default function GuidePage() {
         <HelpRail />
       </div>
     </main>
+  );
+}
+
+export default function GuidePage() {
+  return (
+    <Suspense>
+      <GuideInner />
+    </Suspense>
   );
 }

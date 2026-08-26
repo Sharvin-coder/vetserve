@@ -7,6 +7,8 @@ from .routers.admin import router as admin_router
 from .routers.ask import router as ask_router
 from .routers.auth import router as auth_router
 from .routers.feedback import router as feedback_router
+from .routers.hours_export import router as hours_router
+from .routers.public import router as public_router
 from .routers.tasks import router as tasks_router
 
 app = FastAPI(title="VetServe Katy API", version="0.1.0")
@@ -15,6 +17,8 @@ app.include_router(feedback_router)
 app.include_router(auth_router)
 app.include_router(tasks_router)
 app.include_router(admin_router)
+app.include_router(hours_router)
+app.include_router(public_router)
 
 app.add_middleware(
     CORSMiddleware,

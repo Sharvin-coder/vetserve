@@ -25,6 +25,9 @@ class Settings(BaseSettings):
 
     student_email_domain: str = ""
 
+    # where the web app lives, for links printed on PDFs
+    public_web_url: str = "http://localhost:3000"
+
 
 @lru_cache
 def get_settings() -> Settings:

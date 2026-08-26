@@ -5,11 +5,70 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { Table, Td, Th } from "@/components/ui/Table";
+import { useToast } from "@/components/ui/Toast";
+import { API_URL } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { CATEGORY_LABELS, myHours, type HoursRow } from "@/lib/tasks";
+
+function ExportBlock() {
+  const { session } = useAuth();
+  const toast = useToast();
+  const [busy, setBusy] = useState(false);
+  const [code, setCode] = useState<string | null>(null);
+
+  async function download() {
+    if (!session) return;
+    setBusy(true);
+    try {
+      const resp = await fetch(`${API_URL}/hours/export`, {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+      if (!resp.ok) throw new Error();
+      setCode(resp.headers.get("X-Verification-Code"));
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "vetserve-hours.pdf";
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      toast("Couldn't build the PDF. Try again.", "danger");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="mt-6 flex flex-wrap items-center gap-4">
+      <Button onClick={download} disabled={busy}>
+        Download verified PDF
+      </Button>
+      {code && (
+        <p className="flex items-center gap-2 text-ui">
+          <span className="text-ink-muted">Verification code</span>
+          <span className="font-semibold text-accent tnum">{code}</span>
+          <button
+            type="button"
+            onClick={() => {
+              navigator.clipboard.writeText(code).then(
+                () => toast("Code copied."),
+                () => toast("Couldn't copy — select it by hand.", "danger"),
+              );
+            }}
+            className="min-h-[44px] rounded-control border border-line px-3 text-sm font-medium text-ink hover:border-primary"
+          >
+            Copy
+          </button>
+        </p>
+      )}
+    </div>
+  );
+}
 
 function fmtDate(iso: string): string {
   const d = new Date(iso);
@@ -103,10 +162,7 @@ export default function HoursPage() {
         </Table>
       )}
 
-      <p className="mt-5 text-sm text-ink-muted">
-        The verified PDF export (with a verification code your school can check) is coming in the
-        next build step.
-      </p>
+      {rows !== null && rows.length > 0 && <ExportBlock />}
     </main>
   );
 }
