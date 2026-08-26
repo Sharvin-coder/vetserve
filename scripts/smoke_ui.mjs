@@ -9,8 +9,9 @@ const CHECKS = [
   // curly apostrophes Next renders for ’
   ["/guide", ["VetGuide", "Ask VetGuide", "People who can help", "official advice"]],
   ["/account", ["Sign in", "Create account"]],
-  ["/board", ["Task board", "task board"]],
-  ["/post", ["Posting is for veterans", "Sign in"]],
+  // auth-dependent screens SSR differently signed-out vs loading; "a|b" = either
+  ["/board", ["Task board"]],
+  ["/post", ["Posting is for veterans|Post a task"]],
   ["/hours", ["hours"]],
   ["/styleguide", ["Styleguide", "Citations", "Status pills"]],
   ["/status", ["System check", "run locally"]],
@@ -22,7 +23,7 @@ for (const [path, needles] of CHECKS) {
   try {
     const resp = await fetch(BASE + path);
     const html = await resp.text();
-    const missing = needles.filter((n) => !html.includes(n));
+    const missing = needles.filter((n) => !n.split("|").some((alt) => html.includes(alt)));
     if (!resp.ok || missing.length) {
       failed++;
       console.log(`FAIL ${path} — status ${resp.status}${missing.length ? `, missing: ${missing.join("; ")}` : ""}`);
