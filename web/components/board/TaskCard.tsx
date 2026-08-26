@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { StatusPill } from "@/components/ui/StatusPill";
+import { useAuth } from "@/lib/auth";
+import { roughMilesBetween } from "@/lib/geo";
 import { CATEGORY_LABELS, type Task } from "@/lib/tasks";
 
 function daysAgo(iso: string): string {
@@ -18,6 +20,10 @@ export function TaskCard({
   task: Task;
   action?: React.ReactNode;
 }) {
+  const { profile } = useAuth();
+  const miles = roughMilesBetween(profile?.zip, task.zip);
+  const distance =
+    miles === null ? "" : miles === 0 ? " · your ZIP" : ` · about ${miles} mi away`;
   return (
     <article className="flex flex-col gap-2.5 rounded-card border border-line bg-surface p-5">
       <div className="flex items-baseline justify-between gap-3">
@@ -35,7 +41,8 @@ export function TaskCard({
         <p className="line-clamp-2 text-ui text-ink-muted">{task.description}</p>
       ) : null}
       <p className="text-sm text-ink-muted tnum">
-        {task.zip} · about {task.est_hours} {task.est_hours === 1 ? "hour" : "hours"} · posted{" "}
+        {task.zip}
+        {distance} · about {task.est_hours} {task.est_hours === 1 ? "hour" : "hours"} · posted{" "}
         {daysAgo(task.created_at)}
       </p>
       {action ? <div className="mt-1">{action}</div> : null}
