@@ -3,8 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
 from .health import full_health
+from .routers.ask import router as ask_router
 
 app = FastAPI(title="VetServe Katy API", version="0.1.0")
+app.include_router(ask_router)
 
 app.add_middleware(
     CORSMiddleware,
