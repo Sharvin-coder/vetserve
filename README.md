@@ -35,9 +35,14 @@ Prerequisites: [Node 20+](https://nodejs.org), [Python 3.11+](https://python.org
    In the dashboard: Settings → API. Copy the project URL, the `anon` key, and the
    `service_role` key into `.env`.
 
-3. **Run the migrations** (none yet in Phase 0 — this section activates in Phase 3):
-   paste each file from `supabase/migrations/` into the Supabase SQL editor in
-   filename order, or use `supabase db push` if you have the CLI.
+3. **Run the migrations.** Six files in `supabase/migrations/` (corpus +
+   search functions, accounts + the task state machine, logs, exports,
+   grants, name resolution). Either paste them into the Supabase SQL editor
+   in filename order, or link the project and run `npx supabase db push`.
+
+   *No Supabase account? The whole stack also runs locally:*
+   `npx supabase init && npx supabase start` (needs Docker) prints the URL
+   and keys to put in `.env`, and applies the migrations for you.
 
 4. **Pull the models** (one-time, ~5 GB total):
 
@@ -73,10 +78,24 @@ Prerequisites: [Node 20+](https://nodejs.org), [Python 3.11+](https://python.org
    npm run dev
    ```
 
-7. **Verify.** Open [http://localhost:3000](http://localhost:3000) — the system
-   check page shows whether the API, Ollama (and which models are pulled), and
-   Supabase are all reachable. The raw report is at
+7. **Verify.** Open [http://localhost:3000/status](http://localhost:3000/status)
+   — the system check shows whether the API, Ollama (and which models are
+   pulled), and Supabase are all reachable. Raw report:
    [http://localhost:8000/health](http://localhost:8000/health).
+
+8. **Load the corpus and demo data** (from `api/`):
+
+   ```
+   uv run python -m app.ingest.cli
+   ```
+
+   ```
+   uv run python ../scripts/seed_demo.py
+   ```
+
+   The first ingests all 15 official documents (fetch → chunk → embed); the
+   second creates the demo accounts and ten tasks. `web/.env.local` is
+   generated automatically from the root `.env` on every dev/build.
 
 ## Design system
 

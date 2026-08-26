@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node ../scripts/check_contrast.mjs",
+    "predev": "node ../scripts/check_contrast.mjs && node ../scripts/sync_env.mjs",
     "dev": "next dev",
-    "prebuild": "node ../scripts/check_contrast.mjs",
+    "prebuild": "node ../scripts/check_contrast.mjs && node ../scripts/sync_env.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
