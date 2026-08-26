@@ -13,11 +13,16 @@ Rules:
 - 2 to 6 sentences. No headers, no bullet lists, no preamble."""
 
 
+# CPU latency budget: cap what each source contributes to the prompt
+MAX_CHUNK_CHARS = 1400
+
+
 def build_messages(question: str, chunks: list[Retrieved]) -> list[dict[str, str]]:
     source_lines = []
     for c in chunks:
         page = f", page {c.page}" if c.page else ""
-        source_lines.append(f"[{c.citation_n}] {c.title}{page}\n{c.content}")
+        content = c.content[:MAX_CHUNK_CHARS]
+        source_lines.append(f"[{c.citation_n}] {c.title}{page}\n{content}")
     sources = "\n\n".join(source_lines)
     return [
         {"role": "system", "content": SYSTEM_PROMPT},

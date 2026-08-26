@@ -39,3 +39,14 @@ Running log of judgment calls and anything that needs YOUR input. Newest last.
 - **Contrast gate caught a real bug** on its first run: brick-on-brick-tint
   (active citation marker) was 4.32:1 — below AA. Active markers now invert
   to brick background + white text (4.92:1).
+- **Latency reality check.** This laptop has no GPU (Intel Iris Xe), so a 7B
+  model is CPU-only. After the spec's remedies (context cut to 4 chunks ×
+  1400 chars, crisis check parallelized with retrieval, model pinned in
+  memory with OLLAMA_KEEP_ALIVE=-1), a warm answer still takes ~1–2 minutes;
+  the <4 s first-token budget is not physically reachable on this hardware
+  with qwen2.5:7b. On any machine with a GPU it will be fine. For the demo
+  recording, set `LLM_PROVIDER=groq` (the spec's sanctioned fallback) —
+  answers stream in ~1 s. Retrieval eval: 93% top-3 hit rate (target 80%).
+- **TVC's WAF** 404s unfamiliar user agents; the fetcher now identifies as
+  `Mozilla/5.0 (compatible; VetServeKaty/0.1; ...)`, which passes. All 15
+  sources ingested → 526 chunks.

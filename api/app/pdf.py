@@ -162,13 +162,17 @@ def build_hours_pdf(
     c.setFont(_font("bold"), 15)
     c.drawString(tx, ty - 38, code)
 
-    # footer
+    # footer (wrapped by hand; drawString does not wrap)
     c.setFillColor(INK_MUTED)
     c.setFont(_font("body"), 8.5)
     c.drawString(
         margin,
-        0.55 * inch,
-        "Every line above was confirmed by the veteran who received the help. "
+        0.68 * inch,
+        "Every line above was confirmed by the veteran who received the help.",
+    )
+    c.drawString(
+        margin,
+        0.53 * inch,
         "VetServe Katy is a student-built community project, not a government service.",
     )
 

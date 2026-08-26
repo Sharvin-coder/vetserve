@@ -1,11 +1,12 @@
 """VetGuide orchestration: crisis gate → retrieve → generate → validate."""
 
+import asyncio
 import logging
 from collections.abc import AsyncIterator
 from typing import Any
 
 from ..llm import GENERATION_OPTS, generation_client, generation_model
-from .crisis import CRISIS_RESPONSE, is_crisis
+from .crisis import CRISIS_RESPONSE, keyword_crisis, model_crisis
 from .offices import pick_office
 from .prompt import build_messages
 from .retrieve import FLOOR, HIGH_THRESHOLD, Retrieved, hybrid_retrieve
@@ -83,10 +84,15 @@ async def _generate(question: str, chunks: list[Retrieved], retry_hint: str | No
 
 
 async def answer_question(question: str) -> dict[str, Any]:
-    if await is_crisis(question):
+    # keyword gate is instant; the model check runs concurrently with
+    # retrieval so it costs no wall-clock on the common (non-crisis) path
+    if keyword_crisis(question):
         return dict(CRISIS_RESPONSE)
+    crisis_check = asyncio.create_task(model_crisis(question))
 
     chunks = await hybrid_retrieve(question)
+    if await crisis_check:
+        return dict(CRISIS_RESPONSE)
     if not chunks or chunks[0].rerank_score < FLOOR:
         return _no_answer(question, chunks)
 
@@ -128,11 +134,15 @@ async def stream_answer(question: str) -> AsyncIterator[dict[str, Any]]:
     the validated answer from the `final` event — so nothing unverified ever
     persists on screen.
     """
-    if await is_crisis(question):
+    if keyword_crisis(question):
         yield {"event": "final", "data": dict(CRISIS_RESPONSE)}
         return
+    crisis_check = asyncio.create_task(model_crisis(question))
 
     chunks = await hybrid_retrieve(question)
+    if await crisis_check:
+        yield {"event": "final", "data": dict(CRISIS_RESPONSE)}
+        return
     if not chunks or chunks[0].rerank_score < FLOOR:
         yield {"event": "final", "data": _no_answer(question, chunks)}
         return

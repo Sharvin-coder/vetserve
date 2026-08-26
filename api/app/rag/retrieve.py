@@ -11,7 +11,8 @@ from ..llm import embed_one
 
 VECTOR_K = 20
 KEYWORD_K = 20
-FINAL_K = 6
+RERANK_K = 16  # only the best RRF candidates go to the cross-encoder
+FINAL_K = 4  # CPU latency budget: fewer chunks = faster prompt eval
 RRF_K = 60  # standard reciprocal-rank-fusion constant
 
 # rerank score (sigmoid of bge logit) thresholds for the confidence label
@@ -79,7 +80,7 @@ async def hybrid_retrieve(question: str) -> list[Retrieved]:
                 fused[item.id] = item
             fused[item.id].rrf_score += 1.0 / (RRF_K + rank + 1)
 
-    candidates = sorted(fused.values(), key=lambda c: c.rrf_score, reverse=True)
+    candidates = sorted(fused.values(), key=lambda c: c.rrf_score, reverse=True)[:RERANK_K]
     if not candidates:
         return []
 

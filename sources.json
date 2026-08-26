@@ -1,62 +1,92 @@
 [
   {
     "url": "https://department.va.gov/wp-content/uploads/2024/12/2025-Federal-Benefits-for-Veterans-Dependents-and-Survivors.pdf",
-    "title": "Federal Benefits for Veterans, Dependents and Survivors (2025 edition)"
+    "title": "Federal Benefits for Veterans, Dependents and Survivors (2025 edition)",
+    "sha256": "77682e5b972325d82360469a0cd6444c4884a6a0bc0dad3a56a5bbbbb7e93bba",
+    "fetched_at": "2026-08-26T05:36:53.430726+00:00"
   },
   {
     "url": "https://www.va.gov/disability/eligibility/",
-    "title": "VA Disability Compensation — Eligibility"
+    "title": "VA Disability Compensation \u2014 Eligibility",
+    "sha256": "1e1166f6cb56e54480fd738bb734732301f4aa604a663279d1153b6945cd01a4",
+    "fetched_at": "2026-08-26T05:36:56.649771+00:00"
   },
   {
     "url": "https://www.va.gov/disability/how-to-file-claim/",
-    "title": "VA Disability Compensation — How to File a Claim"
+    "title": "VA Disability Compensation \u2014 How to File a Claim",
+    "sha256": "f11c974a7833e0b2be92364e52df18aad86480d0715c5c14e8a3624604a3d25e",
+    "fetched_at": "2026-08-26T05:37:01.071614+00:00"
   },
   {
     "url": "https://www.va.gov/health-care/eligibility/",
-    "title": "VA Health Care — Eligibility"
+    "title": "VA Health Care \u2014 Eligibility",
+    "sha256": "3ef8a39990d44994230768624d6ce9d2f72ae8eb15dedc84b74f97d3052724a4",
+    "fetched_at": "2026-08-26T05:37:06.925119+00:00"
   },
   {
     "url": "https://www.va.gov/health-care/eligibility/priority-groups/",
-    "title": "VA Health Care — Priority Groups"
+    "title": "VA Health Care \u2014 Priority Groups",
+    "sha256": "56db13761c34a269d4b23ed6dacc1a5b15c44de2c7577fad7dacae8e95af046d",
+    "fetched_at": "2026-08-26T05:37:17.150483+00:00"
   },
   {
     "url": "https://www.va.gov/health-care/how-to-apply/",
-    "title": "VA Health Care — How to Apply / Enrollment"
+    "title": "VA Health Care \u2014 How to Apply / Enrollment",
+    "sha256": "c9c57e7b24738d013e6d58534919c293e6fb80e2a3a97f74a029a438577241af",
+    "fetched_at": "2026-08-26T05:37:21.239944+00:00"
   },
   {
     "url": "https://www.va.gov/education/about-gi-bill-benefits/",
-    "title": "VA Education — About GI Bill Benefits"
+    "title": "VA Education \u2014 About GI Bill Benefits",
+    "sha256": "933a8fb5c4da8cee9360595fbcc9a972625ba71edf0659f604285f62ca7bd78a",
+    "fetched_at": "2026-08-26T05:37:23.797172+00:00"
   },
   {
     "url": "https://tvc.texas.gov/education/hazlewood/",
-    "title": "TVC — Hazlewood Act"
+    "title": "TVC \u2014 Hazlewood Act",
+    "sha256": "9b9737be11ea605080ce65c20345910e3115bb9fc564b4679d53cd538b73bb38",
+    "fetched_at": "2026-08-26T05:37:50.757786+00:00"
   },
   {
     "url": "https://tvc.texas.gov/news/property-tax-exemptions-available-veterans-disability-rating/",
-    "title": "TVC — Texas Disabled Veteran Property Tax Exemptions"
+    "title": "TVC \u2014 Texas Disabled Veteran Property Tax Exemptions",
+    "sha256": "743aa9200947d6d9e423e518ef72ba3f6631e8b717833bf82c8d222adfac7c35",
+    "fetched_at": "2026-08-26T05:37:54.870681+00:00"
   },
   {
     "url": "https://tvc.texas.gov/claims/",
-    "title": "TVC — Claims Representation"
+    "title": "TVC \u2014 Claims Representation",
+    "sha256": "1b75001a4881226d0ee63d8088dd06f9b3d7aa1da90b21866f6fe91323278683",
+    "fetched_at": "2026-08-26T05:37:59.819186+00:00"
   },
   {
-    "url": "https://tvc.texas.gov/veterans-employment-preference/",
-    "title": "TVC — Texas Veterans Employment Preference"
+    "url": "https://tvc.texas.gov/employers/veterans-employment-preference/",
+    "title": "TVC \u2014 Texas Veterans Employment Preference",
+    "sha256": "1bcf73155a2d9b2972b3f7145e5b1499e39d79f8f8fb15cd98be4342153c070e",
+    "fetched_at": "2026-08-26T05:40:27.128705+00:00"
   },
   {
     "url": "https://www.va.gov/houston-health-care/locations/michael-e-debakey-department-of-veterans-affairs-medical-center/",
-    "title": "Michael E. DeBakey VA Medical Center — Location, Contact and Hours"
+    "title": "Michael E. DeBakey VA Medical Center \u2014 Location, Contact and Hours",
+    "sha256": "c8006cd18f23689e72a21d56df684b70f2b1ff8ea82b982439971c0dbbabf60d",
+    "fetched_at": "2026-08-26T05:39:01.979662+00:00"
   },
   {
     "url": "https://www.va.gov/houston-health-care/locations/katy-va-clinic/",
-    "title": "Katy VA Clinic — Location, Contact and Hours"
+    "title": "Katy VA Clinic \u2014 Location, Contact and Hours",
+    "sha256": "3ece0f942028d5343650bb5e7566edf650e494ab16a110b99321758f7ac274e0",
+    "fetched_at": "2026-08-26T05:39:19.654065+00:00"
   },
   {
     "url": "https://www.fortbendcountytx.gov/government/departments/commissioners-court/county-judge/veteran-service-office",
-    "title": "Fort Bend County Veterans Service Office"
+    "title": "Fort Bend County Veterans Service Office",
+    "sha256": "8952ba6564ad2735f1c275dd6ca8c4174a6d9a8eeb3769284d1522b92d9e894f",
+    "fetched_at": "2026-08-26T05:39:23.494320+00:00"
   },
   {
     "url": "https://www.fortbendcountytx.gov/government/departments/commissioners-court/county-judge/veteran-service-office/contact-us",
-    "title": "Fort Bend County Veterans Service Office — Contact and Hours"
+    "title": "Fort Bend County Veterans Service Office \u2014 Contact and Hours",
+    "sha256": "1c71054115ce94ed3bf90ab8e0b757083699d4a9611076500171963306e3c30f",
+    "fetched_at": "2026-08-26T05:39:24.471198+00:00"
   }
 ]

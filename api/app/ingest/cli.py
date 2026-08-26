@@ -30,7 +30,7 @@ async def main() -> int:
         needle = args.only.lower()
         if needle and needle not in src["url"].lower() and needle not in src["title"].lower():
             continue
-        print(f"→ {src['title']}")
+        print(f"-> {src['title']}")
         try:
             result = await ingest_source(src["url"], src["title"], src.get("local_path"))
         except Exception as exc:  # noqa: BLE001 — report every failure, keep going

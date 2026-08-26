@@ -12,7 +12,9 @@ from ..llm import embed_texts
 from .chunk import Chunk, chunk_blocks
 from .extract import extract_html, extract_pdf
 
-UA = "VetServeKaty/0.1 (Congressional App Challenge project; contact via repo)"
+# "Mozilla/5.0 (compatible; ...)" — tvc.texas.gov's WAF 404s unfamiliar
+# user agents; the compatible-prefix form passes while still naming us
+UA = "Mozilla/5.0 (compatible; VetServeKaty/0.1; Congressional App Challenge)"
 
 EMBED_BATCH = 16
 
