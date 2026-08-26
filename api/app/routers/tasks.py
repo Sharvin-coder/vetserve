@@ -83,12 +83,10 @@ async def task_detail(task_id: int, user: AuthedUser = Depends(current_user)):
     addr = addr_q.execute().data
     task["address"] = addr[0]["address"] if addr else None
 
-    # display names for the two parties this caller may see
-    names: dict[str, str] = {}
+    # display names resolve only for the other party of a shared task
+    names: dict[str, str | None] = {}
     for uid in {task["posted_by"], task.get("claimed_by")} - {None}:
-        prof = user.client.table("profiles").select("display_name").eq("id", uid).execute().data
-        if prof:
-            names[uid] = prof[0]["display_name"]
+        names[uid] = user.client.rpc("task_party_name", {"p_user": uid}).execute().data
     task["posted_by_name"] = names.get(task["posted_by"])
     task["claimed_by_name"] = names.get(task.get("claimed_by"))
     return task
