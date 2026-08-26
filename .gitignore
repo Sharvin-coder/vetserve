@@ -1,0 +1,24 @@
+# env
+.env
+.env.local
+.env*.local
+
+# node
+node_modules/
+web/.next/
+web/out/
+web/next-env.d.ts
+*.tsbuildinfo
+
+# python
+__pycache__/
+*.pyc
+api/.venv/
+.venv/
+.ruff_cache/
+.pytest_cache/
+
+# misc
+.DS_Store
+Thumbs.db
+*.log

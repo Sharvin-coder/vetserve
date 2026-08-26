@@ -1,0 +1,55 @@
+@import "../styles/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  body {
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  /* one focus style, everywhere, always visible */
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: var(--radius-control);
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-ink);
+  }
+
+  /* tabular numerals for hours, dates, and any table */
+  .tnum,
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* citation source-card excerpt highlight — pale brick tint, ink text */
+  mark.match {
+    background: var(--accent-tint);
+    color: var(--ink);
+    padding: 0 0.1em;
+  }
+}

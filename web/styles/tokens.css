@@ -1,0 +1,56 @@
+/* VetServe Katy design tokens.
+   The single source of truth for color, type scale, spacing, and shape.
+   tailwind.config.ts reads ONLY from these variables; no color literals
+   anywhere else in the codebase. Contrast pairs are enforced by
+   scripts/check_contrast.mjs (runs before every dev/build). */
+
+:root {
+  /* ---- color ---- */
+  --bg: #f7f5f0; /* warm paper, grey-leaning — not cream */
+  --surface: #ffffff;
+  --ink: #1c2321; /* near-black with a green cast; all body text */
+  --ink-muted: #5b625f;
+  --line: #d9d5cc;
+
+  --primary: #1f4e5f; /* deep teal-blue: buttons, links */
+  --primary-ink: #ffffff;
+
+  --accent: #b5542a; /* brick: citation system + verified mark ONLY */
+
+  --success: #2f6b4f;
+  --warn: #9a6a12;
+  --danger: #9b2c2c;
+
+  /* Derived tints (mixes of palette colors, not new colors).
+     Colored TEXT never sits on a tint — tints carry ink text plus a
+     colored rule/pill, so AA holds everywhere. */
+  --accent-tint: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  --success-tint: color-mix(in srgb, var(--success) 9%, var(--surface));
+  --warn-tint: color-mix(in srgb, var(--warn) 10%, var(--surface));
+  --danger-tint: color-mix(in srgb, var(--danger) 8%, var(--surface));
+  --primary-tint: color-mix(in srgb, var(--primary) 8%, var(--surface));
+
+  /* ---- type scale: 17 / 20 / 24 / 30 / 38 / 48 ---- */
+  --text-base: 1.0625rem; /* 17px — veterans-facing default */
+  --text-ui: 1rem; /* 16px — dense/admin screens */
+  --text-sm: 0.875rem; /* 14px — absolute floor, captions */
+  --text-md: 1.25rem; /* 20px */
+  --text-lg: 1.5rem; /* 24px */
+  --text-xl: 1.875rem; /* 30px */
+  --text-2xl: 2.375rem; /* 38px */
+  --text-3xl: 3rem; /* 48px */
+
+  --leading-body: 1.55;
+
+  /* ---- shape ---- */
+  --radius-control: 6px; /* inputs, buttons */
+  --radius-card: 10px; /* cards */
+  /* pills only for citation chips */
+
+  /* ---- layout ---- */
+  --measure: 72ch; /* reading width */
+  --board-width: 1120px; /* boards and tables */
+
+  /* ---- focus ---- */
+  --focus-ring: 0 0 0 3px var(--bg), 0 0 0 6px var(--primary);
+}
