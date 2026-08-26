@@ -1,5 +1,34 @@
 # Build notes — decisions made while you were away
 
+## State of the world (when you sit back down)
+
+Everything is BUILT, RUNNING, and VERIFIED end-to-end on this machine:
+
+- Web: http://localhost:3000 (dev server) · API: http://localhost:8000
+- Supabase local stack (Docker) with all 6 migrations; Ollama in Docker with
+  both models pulled, corpus ingested (526 chunks from all 15 sources)
+- Verified live: VetGuide streaming answers with validated citations,
+  crisis path, the complete task lifecycle through the UI, hours PDF +
+  /verify page, admin approvals, signup domain gates
+- Tests: 13 pytest (incl. live retrieval eval at 93%), RLS 18/18, UI smoke
+  9/9, contrast gate green, Lighthouse accessibility 100 on six routes,
+  zero horizontal overflow at 375px even at 200% text scale
+
+To restart after a reboot:
+
+    docker start ollama && npx supabase start
+    cd api && uv run uvicorn app.main:app --port 8000   # terminal 1
+    cd web && npm run dev                               # terminal 2
+
+`supabase db reset` wipes local data (then rerun
+`uv run python ../scripts/seed_demo.py` and the ingest CLI from api/).
+DEMO.md has the 3-minute recording script and demo logins.
+
+**Still owed:** the brief's screenshot-critique pass (375px/1280px). The
+in-app browser can't capture pixels while its pane is hidden, so I verified
+structure, overflow, and contrast programmatically instead — do one visual
+lap over /styleguide, /guide, and the landing page when you're back.
+
 Running log of judgment calls and anything that needs YOUR input. Newest last.
 
 ## Needs your decision
