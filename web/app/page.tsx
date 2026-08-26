@@ -75,9 +75,6 @@ export default function LandingPage() {
                 </Button>
               </div>
             </form>
-            <p className="mt-2 text-sm text-ink-muted">
-              Answers come from official VA and Texas documents, with sources you can check.
-            </p>
           </div>
 
           {/* three real task cards */}
