@@ -58,5 +58,17 @@
   {
     "question": "What are the hours of the Katy VA clinic?",
     "expected_url": "https://www.va.gov/houston-health-care/locations/katy-va-clinic/"
+  },
+  {
+    "question": "Am I eligible for the hazelwood act?",
+    "expected_url": "https://tvc.texas.gov/education/hazlewood/"
+  },
+  {
+    "question": "how do i get my texas property tax discount as a disabled vet",
+    "expected_url": "https://tvc.texas.gov/news/property-tax-exemptions-available-veterans-disability-rating/"
+  },
+  {
+    "question": "gi bill benfits for my daughter",
+    "expected_url": "https://www.va.gov/education/about-gi-bill-benefits/"
   }
 ]
