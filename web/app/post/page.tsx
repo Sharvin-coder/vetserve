@@ -94,7 +94,7 @@ export default function PostTaskPage() {
           {[
             "A verified student sees your task and offers to help.",
             "You accept the offer you like — only then can they see your address.",
-            "After the task is done, you confirm it went well; that's it.",
+            "After the task is done, you confirm it went well; that’s it.",
           ].map((step, i) => (
             <li key={step} className="flex gap-3.5">
               <span

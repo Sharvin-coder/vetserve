@@ -51,7 +51,7 @@ export default function LandingPage() {
           Straight answers about benefits, and neighbors who&rsquo;ll help with the rest.
         </h1>
 
-        <div className="mt-10 grid gap-10 md:grid-cols-2">
+        <div className="mt-10 grid gap-10 md:grid-cols-2 md:items-center">
           {/* live VetGuide input */}
           <div>
             <form
