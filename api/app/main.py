@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+import asyncio
+import contextlib
+
 from .config import get_settings
 from .health import full_health
 from .routers.admin import router as admin_router
@@ -26,6 +29,20 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.on_event("startup")
+async def warm_reranker() -> None:
+    """Load the ~1 GB cross-encoder in the background at boot so the first
+    question doesn't pay ~30 s of model loading."""
+
+    def load() -> None:
+        with contextlib.suppress(Exception):  # offline boot is fine; lazy path remains
+            from .rag.retrieve import _reranker
+
+            _reranker()
+
+    asyncio.get_running_loop().run_in_executor(None, load)
 
 
 @app.get("/health")

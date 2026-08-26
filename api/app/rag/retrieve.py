@@ -11,7 +11,7 @@ from ..llm import embed_one
 
 VECTOR_K = 20
 KEYWORD_K = 20
-RERANK_K = 16  # only the best RRF candidates go to the cross-encoder
+RERANK_K = 12  # only the best RRF candidates go to the cross-encoder
 FINAL_K = 4  # CPU latency budget: fewer chunks = faster prompt eval
 RRF_K = 60  # standard reciprocal-rank-fusion constant
 
@@ -38,7 +38,8 @@ def _reranker():
     # lazy: ~1 GB model, loaded once per process, CPU is fine for top-20
     from sentence_transformers import CrossEncoder
 
-    return CrossEncoder("BAAI/bge-reranker-base", max_length=512)
+    # 384 tokens covers question + the front of any chunk; ~35% faster on CPU
+    return CrossEncoder("BAAI/bge-reranker-base", max_length=384)
 
 
 def _to_retrieved(rows: list[dict[str, Any]]) -> list[Retrieved]:

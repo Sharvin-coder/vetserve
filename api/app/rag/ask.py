@@ -2,6 +2,7 @@
 
 import asyncio
 import logging
+import time
 from collections.abc import AsyncIterator
 from typing import Any
 
@@ -90,13 +91,17 @@ async def answer_question(question: str) -> dict[str, Any]:
         return dict(CRISIS_RESPONSE)
     crisis_check = asyncio.create_task(model_crisis(question))
 
+    t0 = time.perf_counter()
     chunks = await hybrid_retrieve(question)
+    t_retrieval = time.perf_counter() - t0
     if await crisis_check:
         return dict(CRISIS_RESPONSE)
     if not chunks or chunks[0].rerank_score < FLOOR:
         return _no_answer(question, chunks)
 
+    t0 = time.perf_counter()
     raw = await _generate(question, chunks)
+    t_generation = time.perf_counter() - t0
     validation = await validate_answer(raw, chunks) if raw and raw != "NO_ANSWER" else None
 
     # small-model discipline: one retry if the format collapsed entirely
@@ -124,6 +129,10 @@ async def answer_question(question: str) -> dict[str, Any]:
         "dropped_sentences": len(validation.dropped),
         "dropped_detail": validation.dropped,
         "crisis": False,
+        "timings": {
+            "retrieval_s": round(t_retrieval, 2),
+            "generation_s": round(t_generation, 2),
+        },
     }
 
 
