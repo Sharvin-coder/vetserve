@@ -94,6 +94,18 @@ def test_mixed_answer():
     assert "fishing" in out.dropped[0]["sentence"]
 
 
+def test_abbreviations_do_not_split_sentences():
+    out = run(
+        "Veterans rated at least 10% by the U.S. Department of Veterans Affairs "
+        "get a Hazlewood property tax exemption. [1]"
+    )
+    # one sentence, one citation — "U.S." must not become its own fragment
+    assert out.used_citations == [1]
+    assert out.dropped == []
+    assert out.answer.count("[1]") == 1
+    assert "U.S. Department" in out.answer
+
+
 def test_non_assertive_sentence_survives_uncited():
     out = run(
         "The Hazlewood Act covers tuition at public schools. [1] "

@@ -39,20 +39,34 @@ class Validation:
     dropped: list[dict[str, str]]
 
 
+# a "sentence" ending like "the U." or "No." is an abbreviation fragment,
+# not a sentence boundary — merge it into what follows
+_ABBREV_TAIL = re.compile(r"(?:\b[A-Z]|\b(?:No|Dr|Mr|Mrs|Ms|St|vs|etc|approx))\.$")
+
+
 def _sentences(text: str) -> list[str]:
-    out: list[str] = []
+    # span-merge so original spacing survives ("U.S." never becomes "U. S.")
+    spans: list[list[int]] = []
     consumed = 0
     for m in _SENTENCE.finditer(text):
-        piece = m.group(0).strip()
-        if piece:
-            out.append(piece)
+        if not m.group(0).strip():
+            consumed = m.end()
+            continue
+        prev = text[spans[-1][0] : spans[-1][1]].strip() if spans else ""
+        if spans and _ABBREV_TAIL.search(prev) and not _MARKER.search(prev[-6:]):
+            spans[-1][1] = m.end()
+        else:
+            spans.append([m.start(), m.end()])
         consumed = m.end()
     # a trailing fragment with no closing punctuation is still a sentence —
     # losing it silently would be the validator deleting good text
-    rest = text[consumed:].strip()
-    if rest:
-        out.append(rest)
-    return out
+    if text[consumed:].strip():
+        prev = text[spans[-1][0] : spans[-1][1]].strip() if spans else ""
+        if spans and _ABBREV_TAIL.search(prev) and not _MARKER.search(prev[-6:]):
+            spans[-1][1] = len(text)
+        else:
+            spans.append([consumed, len(text)])
+    return [s for a, b in spans if (s := text[a:b].strip())]
 
 
 def _cosine(a: np.ndarray, b: np.ndarray) -> float:
