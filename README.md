@@ -107,5 +107,93 @@ supabase/migrations/  SQL migrations incl. row-level-security policies
 scripts/              contrast gate, seed and eval scripts
 ```
 
-Architecture diagram, retrieval/validation details, model rationale,
-limitations, and the responsible-use section land in the Phase 4 README pass.
+## Architecture
+
+```mermaid
+flowchart LR
+    subgraph Browser
+        W[Next.js web app]
+    end
+    subgraph Local services
+        A[FastAPI]
+        O[Ollama<br/>qwen2.5:7b + nomic-embed]
+        S[(Supabase Postgres<br/>pgvector + tsvector + RLS)]
+    end
+    W -->|/ask SSE, tasks, hours| A
+    W -->|sign in / sign out| S
+    A -->|generate + embed| O
+    A -->|RPC state machine,<br/>RLS-bound queries| S
+    A -->|rerank top-20| R[bge-reranker-base<br/>CPU cross-encoder]
+```
+
+The web app signs users in against Supabase auth directly; every other call
+goes through the API carrying the user's JWT, and the API re-issues queries
+under that JWT so **row-level security applies to every read**. Task
+mutations aren't SQL updates at all — they're `security definer` functions
+(`claim_task`, `accept_claim`, …) that validate the caller's role and the
+current state inside the database, so the five-step lifecycle can't be
+skipped even by a hand-crafted PostgREST request.
+
+## How VetGuide answers (and refuses to make things up)
+
+1. **Crisis gate.** A regex list plus a small model check runs first; a hit
+   returns the Veterans Crisis Line (call 988 press 1 / text 838255) and
+   skips retrieval entirely.
+2. **Hybrid retrieval.** The question is embedded (nomic-embed-text) and run
+   against pgvector (top 20, cosine/HNSW) and Postgres full-text search
+   (top 20, `websearch_to_tsquery`). The two lists merge by reciprocal rank
+   fusion, then `bge-reranker-base` (a cross-encoder, CPU) rescores and keeps
+   the best 6 passages.
+3. **Generation.** qwen2.5:7b-instruct gets a short system prompt, the 6
+   numbered passages, and strict rules: cite every factual sentence `[n]`,
+   or output `NO_ANSWER`. Temperature 0.1, 400 tokens max.
+4. **Citation validation — the important part.** The answer is split into
+   sentences. A sentence citing `[n]` keeps only markers that map to a real
+   retrieved chunk; a factual sentence with no citation is embedded and either
+   attached to its best-matching chunk (cosine ≥ 0.75) or **deleted**. Every
+   deleted sentence is logged to the admin screen with the reason. The UI
+   streams raw tokens for responsiveness, then swaps in the validated text —
+   nothing unverified persists on screen.
+5. **Confidence + handoff.** Low rerank scores replace the answer with "I
+   couldn't find this in official sources" and every answer ends with the
+   phone number of the relevant office (Fort Bend VSO, TVC, Katy VA clinic —
+   all verified against the official pages, see `sources.json`).
+
+## Model choices
+
+- **qwen2.5:7b-instruct** — the strongest instruction-follower we found at a
+  size that streams its first token in under ~4 s on a laptop CPU. Swappable
+  via one env var (`GENERATION_MODEL`, or `LLM_PROVIDER=groq` for demo-day
+  hosted fallback).
+- **nomic-embed-text** — 768-dim, open weights, runs in the same Ollama
+  instance, no separate Python model downloads.
+- **bge-reranker-base** — a cross-encoder reranker lifts the right document
+  into the top 3 far more reliably than either retriever alone; top-20 on CPU
+  costs well under a second.
+
+## Limitations
+
+- VetGuide only knows the ~15 ingested documents (`sources.json`); anything
+  outside them gets an honest "couldn't find this" — by design.
+- A 7B model can misread a passage even with real citations attached; the
+  validator guarantees provenance, not perfect interpretation. The sources
+  are always one tap away, and every screen points at a human.
+- Verification is lightweight (self-attest + admin approval + school email
+  domain); it deters casual misuse, not a determined bad actor.
+- English only, for now.
+
+## Responsible use
+
+VetGuide is **not** legal, medical, or financial advice, and says so in the
+UI. Crisis queries bypass the model pipeline for the Veterans Crisis Line.
+Addresses are never public: they live in a separate table whose RLS policy
+only matches the posting veteran and the one accepted volunteer. Feedback is
+anonymous. Only official government documents are ingested, each recorded
+with URL, fetch date, and hash in `sources.json` — the app never invents a
+source, and drops any sentence it can't back.
+
+## Demo accounts (after `seed_demo.py`)
+
+All passwords: `demo-password-1` — admin `admin@demo.local`, veterans
+`vet.alvarez@demo.local` / `vet.okafor@demo.local` / `vet.nguyen@demo.local`,
+students `priya.n@demo.local` / `marcus.j@demo.local` / `elena.r@demo.local`.

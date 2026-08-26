@@ -43,11 +43,21 @@ export function AnswerText({
   return <p className="max-w-measure whitespace-pre-wrap text-base">{parts}</p>;
 }
 
-/** Streaming view: raw tokens, markers hidden until validation. */
+/** Streaming view: raw tokens fading in word by word (motion #1), markers
+ * hidden until validation swaps in the final text. */
 export function StreamingText({ text }: { text: string }) {
+  const words = text.replace(MARKER, "").split(/(\s+)/);
   return (
     <p className="max-w-measure whitespace-pre-wrap text-base text-ink">
-      {text.replace(MARKER, "")}
+      {words.map((w, i) =>
+        w.trim() ? (
+          <span key={i} className="word-in">
+            {w}
+          </span>
+        ) : (
+          w
+        ),
+      )}
       <span aria-hidden className="text-ink-muted">
         ▍
       </span>

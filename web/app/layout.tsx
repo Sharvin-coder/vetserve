@@ -29,10 +29,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="min-h-screen bg-bg text-ink antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-control focus:bg-surface focus:px-4 focus:py-2 focus:text-primary"
+        >
+          Skip to content
+        </a>
         <AuthProvider>
           <ToastProvider>
             <SiteHeader />
-            {children}
+            <div id="main">{children}</div>
           </ToastProvider>
         </AuthProvider>
       </body>

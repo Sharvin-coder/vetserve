@@ -48,7 +48,7 @@ export function SourceCard({
           ?.scrollIntoView({ block: "nearest", behavior: "smooth" });
       }}
       className={[
-        "cursor-pointer rounded-card border border-line bg-surface p-4 pl-3.5",
+        "card-in cursor-pointer rounded-card border border-line bg-surface p-4 pl-3.5",
         "border-l-2 border-l-accent",
         active ? "bg-accent-tint" : "",
       ].join(" ")}

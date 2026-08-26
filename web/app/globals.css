@@ -52,4 +52,33 @@
     color: var(--ink);
     padding: 0 0.1em;
   }
+
+  /* motion #1: streamed words fade in; the global reduced-motion rule
+     zeroes the duration for users who asked for less movement */
+  @keyframes word-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .word-in {
+    animation: word-in 180ms ease-out both;
+  }
+
+  /* motion #2: citation card expand — height+fade, 150ms ease-out */
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(2px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .card-in {
+    animation: card-in 150ms ease-out both;
+  }
 }
