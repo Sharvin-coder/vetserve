@@ -4,7 +4,7 @@
 const BASE = process.env.WEB_URL ?? "http://localhost:3000";
 
 const CHECKS = [
-  ["/", ["Straight answers about benefits", "Built in Katy for TX-22", "Veterans Crisis Line"]],
+  ["/", ["Straight answers about benefits", "Local offices that answer the phone", "Veterans Crisis Line"]],
   // needles must exist in the server-rendered (signed-out) HTML; note the
   // curly apostrophes Next renders for ’
   ["/guide", ["VetGuide", "Ask VetGuide", "People who can help", "official advice"]],

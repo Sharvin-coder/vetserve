@@ -83,7 +83,7 @@ def build_hours_pdf(
 
     c.setFont(_font("body"), 10.5)
     c.setFillColor(INK_MUTED)
-    tagline = "VetServe Katy — veterans and student volunteers in Fort Bend County, Texas"
+    tagline = "VetServe — veterans and the student volunteers who show up for them"
     c.drawString(margin, y, tagline)
     y -= 30
 
@@ -173,7 +173,7 @@ def build_hours_pdf(
     c.drawString(
         margin,
         0.53 * inch,
-        "VetServe Katy is a student-built community project, not a government service.",
+        "VetServe is a student-built community project, not a government service.",
     )
 
     c.save()

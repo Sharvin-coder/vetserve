@@ -20,9 +20,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "VetServe Katy",
+  title: "VetServe",
   description:
-    "Straight answers about veterans' benefits from official sources, and neighbors who'll help with the rest. Built in Katy for TX-22.",
+    "Straight answers about veterans' benefits from official sources, and neighbors who'll help with the rest.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

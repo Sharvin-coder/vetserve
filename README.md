@@ -1,8 +1,9 @@
-# VetServe Katy
+# VetServe
 
-Straight answers about veterans' benefits from official VA and Texas documents — with
-sources — and a task board that connects local veterans with verified student
-volunteers. Built in Katy, Texas for the 2026 Congressional App Challenge (TX-22).
+Straight answers about veterans' benefits from official government documents —
+with sources — and a task board that connects local veterans with verified
+student volunteers. Built for the 2026 Congressional App Challenge; the current
+corpus and office directory pilot in Fort Bend County, Texas.
 
 Two halves, one audience:
 

@@ -1,4 +1,4 @@
-/* VetServe Katy design tokens.
+/* VetServe design tokens.
    The single source of truth for color, type scale, spacing, and shape.
    tailwind.config.ts reads ONLY from these variables; no color literals
    anywhere else in the codebase. Contrast pairs are enforced by

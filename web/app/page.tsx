@@ -163,7 +163,7 @@ export default function LandingPage() {
       {/* local */}
       <section className="border-t border-line bg-surface">
         <div className="mx-auto max-w-board px-5 py-12">
-          <h2 className="font-display text-lg font-medium">Built in Katy for TX-22</h2>
+          <h2 className="font-display text-lg font-medium">Local offices that answer the phone</h2>
           <p className="mt-2 max-w-measure text-base text-ink-muted">
             These are the people to call when you want to talk it through with a person.
           </p>

@@ -7,7 +7,7 @@ free-tier model. Practice once; the timings below assume fast answers.
 
 **0:00–0:20 — The problem.** Landing page. Say: veterans in Fort Bend County
 navigate a maze of federal and state benefits, and the people who'd gladly help
-them — students a mile away — have no way to find them. VetServe Katy is both
+them — students a mile away — have no way to find them. VetServe is both
 halves: answers with receipts, and neighbors with time.
 
 **0:20–1:10 — VetGuide.** Click the pre-typed question ("Am I eligible for the
@@ -35,7 +35,7 @@ step by step and the note "this exact line lands on Priya's PDF."
 Show the PDF (Fraunces heading, the code, QR). Open `/verify/<code>` in a new
 tab — the school-facing page confirms it against the database, not the paper.
 
-**2:45–3:00 — Close.** Landing footer: "Built in Katy for TX-22." Everything
+**2:45–3:00 — Close.** Landing section: "Local offices that answer the phone." Everything
 runs locally on free, open-source models; every number on screen is a real
 office that answers the phone. Built by a student, for the people down the
 street.

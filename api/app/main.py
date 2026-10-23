@@ -14,7 +14,7 @@ from .routers.hours_export import router as hours_router
 from .routers.public import router as public_router
 from .routers.tasks import router as tasks_router
 
-app = FastAPI(title="VetServe Katy API", version="0.1.0")
+app = FastAPI(title="VetServe API", version="0.1.0")
 app.include_router(ask_router)
 app.include_router(feedback_router)
 app.include_router(auth_router)

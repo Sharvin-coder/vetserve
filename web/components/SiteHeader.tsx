@@ -44,7 +44,7 @@ export function SiteHeader() {
     <header className="border-b border-line bg-surface">
       <div className="mx-auto flex max-w-board flex-wrap items-center gap-x-5 gap-y-2 px-5 py-3">
         <Link href="/" className="font-display text-md font-semibold text-ink">
-          VetServe Katy
+          VetServe
         </Link>
         <nav aria-label="Main" className="flex flex-wrap items-center gap-1">
           {NAV.filter((n) => n.show(profile?.role)).map((n) => (

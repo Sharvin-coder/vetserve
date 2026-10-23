@@ -14,7 +14,7 @@ from .extract import extract_html, extract_pdf
 
 # "Mozilla/5.0 (compatible; ...)" — tvc.texas.gov's WAF 404s unfamiliar
 # user agents; the compatible-prefix form passes while still naming us
-UA = "Mozilla/5.0 (compatible; VetServeKaty/0.1; Congressional App Challenge)"
+UA = "Mozilla/5.0 (compatible; VetServe/0.1; Congressional App Challenge)"
 
 EMBED_BATCH = 16
 

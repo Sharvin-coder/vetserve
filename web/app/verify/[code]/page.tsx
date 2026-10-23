@@ -37,14 +37,14 @@ export default function VerifyPage() {
     <main className="mx-auto max-w-[720px] px-5 py-10">
       <h1 className="mb-2 font-display text-xl font-medium">Hours verification</h1>
       <p className="mb-6 max-w-measure text-base text-ink-muted">
-        This page confirms a VetServe Katy service-hours export against our records. Every line
+        This page confirms a VetServe service-hours export against our records. Every line
         was confirmed by the veteran who received the help.
       </p>
 
       {notFound ? (
         <Banner kind="warn" title="No match for this code.">
           Check the code for typos. If it still doesn&rsquo;t match, the document wasn&rsquo;t
-          issued by VetServe Katy.
+          issued by VetServe.
         </Banner>
       ) : data === null ? (
         <Skeleton className="h-48" />

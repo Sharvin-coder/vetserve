@@ -85,5 +85,5 @@ Running log of judgment calls and anything that needs YOUR input. Newest last.
   recording, set `LLM_PROVIDER=groq` (the spec's sanctioned fallback) —
   answers stream in ~1 s. Retrieval eval: 93% top-3 hit rate (target 80%).
 - **TVC's WAF** 404s unfamiliar user agents; the fetcher now identifies as
-  `Mozilla/5.0 (compatible; VetServeKaty/0.1; ...)`, which passes. All 15
+  `Mozilla/5.0 (compatible; VetServe/0.1; ...)`, which passes. All 15
   sources ingested → 526 chunks.

@@ -1,7 +1,7 @@
 [project]
 name = "vetserve-api"
 version = "0.1.0"
-description = "VetServe Katy API — VetGuide RAG + Task Board"
+description = "VetServe API — VetGuide RAG + Task Board"
 requires-python = ">=3.11,<3.12"
 dependencies = [
     "fastapi>=0.115",
