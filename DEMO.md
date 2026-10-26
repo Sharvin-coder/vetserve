@@ -6,75 +6,81 @@ silent 2:24 reel of the real app, assembled from Playwright recordings
 the model's thinking time). Nothing is mocked; every frame is the live app.
 
 **To finish the video:** record ONE voice track of the narration below while
-watching the reel (phone voice memo is fine — start both at the same moment),
-then either (a) drop video + audio into Clipchamp (preinstalled on Windows 11)
-and export, or (b) hand the audio file back to Claude to merge. One narrator
-is fine; just speak both names at the start.
+watching the reel (phone voice memo is fine — start both at the same moment,
+pass the phone or lean in for each other's lines), then either (a) drop video
++ audio into Clipchamp (preinstalled on Windows 11) and export, or (b) hand
+the audio file back to Claude to merge.
 
 ## Narration — timed to the reel (2:24)
 
+**S** = Sharvin (most lines) · **T** = Tharun (four short lines)
+
 **[0:00 landing page scrolls]**
-We're Sharvin Goyal and ⟨teammate's full name⟩, and this is VetServe. VetServe
-gives veterans straight answers about their benefits — with every sentence
-cited to an official government document — and connects them with verified
-student volunteers for everyday help. It's for veterans and their families
-lost in benefits paperwork, and for students who want to serve the people who
-served.
+**S:** I'm Sharvin Goyal —
+**T:** — and I'm Tharun ⟨last name⟩, and this is VetServe.
+**S:** VetServe gives veterans straight answers about their benefits — with
+every sentence cited to an official government document — and connects them
+with verified student volunteers for everyday help. It's for veterans and
+their families lost in benefits paperwork, and for students who want to serve
+the people who served.
 
 **[0:16 question asked, "Searching official documents"]**
-This is VetGuide. You ask in plain language, and it searches only official
-documents we ingested — VA handbooks, benefits pages, real office directories.
+**S:** This is VetGuide. You ask in plain language, and it searches only
+official documents we ingested — VA handbooks, benefits pages, real office
+directories.
 
 **[0:22 answer appears, citation markers hover one by one]**
-Every claim carries a citation. Hover a marker and you see the exact official
-passage it came from. There's a confidence rating, and every answer ends with
-the phone number of a real office — software should hand you to a person, not
-replace one.
+**S:** Every claim carries a citation. Hover a marker and you see the exact
+official passage it came from. There's a confidence rating, and every answer
+ends with the phone number of a real office — software should hand you to a
+person, not replace one.
 
 **[0:35 typing the concert-tickets question]**
-And when the documents don't cover something —
+**S:** And when the documents don't cover something —
 
 **[0:42 refusal appears]**
-— it says so. A validator deletes any sentence it can't trace to a source.
-It would rather admit it doesn't know than guess about someone's benefits.
+**S:** — it says so. A validator deletes any sentence it can't trace to a
+source. It would rather admit it doesn't know than guess about someone's
+benefits.
 
 **[0:47 crisis message typed, banner takes over]**
-Crisis language never reaches the AI at all. The screen becomes the Veterans
-Crisis Line, instantly.
+**T:** Crisis language never reaches the AI at all. The screen becomes the
+Veterans Crisis Line, instantly.
 
 **[0:57 veteran posts a task: tiles, form, preview, posted]**
-The second half is the task board. A veteran posts a small task — a ride to
-the VA, tech help, yard work. Notice the address: it's collected but hidden.
+**S:** The second half is the task board. A veteran posts a small task — a
+ride to the VA, tech help, yard work. Notice the address: it's collected but
+hidden.
 
 **[1:18 student claims it]**
-A student volunteer — verified through their school email plus a human
+**T:** A student volunteer — verified through their school email plus a human
 approval — claims the task.
 
 **[1:27 veteran accepts]**
-The veteran decides who to accept.
+**S:** The veteran decides who to accept.
 
 **[1:36 address visible to the student, marks done]**
-Only then does that one student see the address — never a public list. The
-student finishes the task and marks it done.
+**S:** Only then does that one student see the address — never a public list.
+The student finishes the task and marks it done.
 
 **[1:45 veteran confirms]**
-The veteran confirms it went well, and the hours become real — the screen
-even shows the exact line that will appear on the student's record.
+**S:** The veteran confirms it went well, and the hours become real — the
+screen even shows the exact line that will appear on the student's record.
 
 **[1:54 hours page, PDF downloads, verification code]**
-Confirmed hours export as a PDF with a verification code and a QR.
+**S:** Confirmed hours export as a PDF with a verification code and a QR.
 
 **[2:04 public verify page]**
-A school checks that code on our verify page and it's confirmed against the
-database — not against a piece of paper.
+**T:** A school checks that code on our verify page, and it's confirmed
+against the database — not against a piece of paper.
 
 **[2:14 landing page again]**
-We built VetServe with Next.js and TypeScript, Python and FastAPI, and
+**S:** We built VetServe with Next.js and TypeScript, Python and FastAPI, and
 Postgres with row-level security. The AI is three free, open-source models —
 Qwen, Nomic, and a BGE reranker — so the whole app runs on one laptop, with
 no paid services between a veteran and their answer. Benefits shouldn't
 require a lawyer, and helping a neighbor shouldn't require an institution.
-That's VetServe. Thanks for watching.
+**T:** That's VetServe. Thanks for watching.
 
 **[2:24 end]**
 
