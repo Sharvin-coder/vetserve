@@ -13,16 +13,16 @@ the audio file back to Claude to merge.
 
 ## Narration — timed to the reel (2:24)
 
-**T** = Tharun (intro only) · **S** = Sharvin (everything after)
+**T** = Tharun (one intro line + the closing line) · **S** = Sharvin (the rest)
 
 **[0:00 landing page scrolls]**
 **S:** I'm Sharvin Goyal —
-**T:** — and I'm Tharun ⟨last name⟩, and this is VetServe. VetServe gives
-veterans straight answers about their benefits — with every sentence cited to
-an official government document — and connects them with verified student
-volunteers for everyday help.
-**S:** It's for veterans and their families lost in benefits paperwork, and
-for students who want to serve the people who served.
+**T:** — and I'm Tharun ⟨last name⟩, and this is VetServe.
+**S:** VetServe gives veterans straight answers about their benefits — with
+every sentence cited to an official government document — and connects them
+with verified student volunteers for everyday help. It's for veterans and
+their families lost in benefits paperwork, and for students who want to serve
+the people who served.
 
 **[0:16 question asked, "Searching official documents"]**
 **S:** This is VetGuide. You ask in plain language, and it searches only
@@ -79,7 +79,7 @@ against the database — not against a piece of paper.
 Postgres with row-level security. The AI is three free, open-source models —
 Qwen, Nomic, and a BGE reranker — so it all runs on one laptop, with no paid
 services between a veteran and their answer.
-**S:** Veterans have served our country. Now it's our turn to serve them —
+**T:** Veterans have served our country. Now it's our turn to serve them —
 with VetServe. Thanks for watching.
 
 **[2:24 end]**
