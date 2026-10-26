@@ -80,7 +80,8 @@ Postgres with row-level security. The AI is three free, open-source models —
 Qwen, Nomic, and a BGE reranker — so it all runs on one laptop, with no paid
 services between a veteran and their answer.
 **T:** Veterans have served our country. Now it's our turn to serve them —
-with VetServe. Thanks for watching.
+with VetServe. Our next step is working with local veterans' organizations
+to get it into the hands of the people who need it. Thanks for watching.
 
 **[2:24 end]**
 
