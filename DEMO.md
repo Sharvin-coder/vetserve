@@ -77,10 +77,10 @@ against the database — not against a piece of paper.
 **[2:14 landing page again]**
 **S:** We built VetServe with Next.js and TypeScript, Python and FastAPI, and
 Postgres with row-level security. The AI is three free, open-source models —
-Qwen, Nomic, and a BGE reranker — so the whole app runs on one laptop, with
-no paid services between a veteran and their answer. Benefits shouldn't
-require a lawyer, and helping a neighbor shouldn't require an institution.
-**T:** That's VetServe. Thanks for watching.
+Qwen, Nomic, and a BGE reranker — so it all runs on one laptop, with no paid
+services between a veteran and their answer.
+**T:** Veterans have served our country. Now it's our turn to serve them —
+with VetServe. Thanks for watching.
 
 **[2:24 end]**
 
