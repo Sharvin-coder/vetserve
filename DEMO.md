@@ -1,127 +1,96 @@
-# VetServe — demo video script (Congressional App Challenge, GA-10)
+# VetServe — demo video (Congressional App Challenge, GA-10)
 
-Two speakers: **S** (Sharvin) and **F** (teammate). Target 2:45–2:55 — hard cap
-is 3:00 and judges may penalize overruns. Screen-record the app at 1280px wide;
-voiceover over the recording is fine (you don't need to be on camera).
+The screen footage is DONE: `demo_clips/vetserve_demo_silent.mp4` — one
+silent 2:24 reel of the real app, assembled from Playwright recordings
+(`scripts/record_demo.mjs` records the beats, ffmpeg concatenates and cuts
+the model's thinking time). Nothing is mocked; every frame is the live app.
 
-Required elements and where they land: names + app name (0:00), purpose in one
-sentence (0:08), target audience (0:20), how it works (0:35–2:30), tools and
-languages (2:30).
+**To finish the video:** record ONE voice track of the narration below while
+watching the reel (phone voice memo is fine — start both at the same moment),
+then either (a) drop video + audio into Clipchamp (preinstalled on Windows 11)
+and export, or (b) hand the audio file back to Claude to merge. One narrator
+is fine; just speak both names at the start.
 
-Before recording: services up (BUILD_NOTES.md runbook), `LLM_PROVIDER=groq` in
-`.env` for fast answers, signed out of the app, seed data loaded.
+## Narration — timed to the reel (2:24)
 
----
+**[0:00 landing page scrolls]**
+We're Sharvin Goyal and ⟨teammate's full name⟩, and this is VetServe. VetServe
+gives veterans straight answers about their benefits — with every sentence
+cited to an official government document — and connects them with verified
+student volunteers for everyday help. It's for veterans and their families
+lost in benefits paperwork, and for students who want to serve the people who
+served.
 
-**[0:00 — landing page on screen]**
+**[0:16 question asked, "Searching official documents"]**
+This is VetGuide. You ask in plain language, and it searches only official
+documents we ingested — VA handbooks, benefits pages, real office directories.
 
-**S:** We're Sharvin and ⟨name⟩, from Georgia's 10th district, and this is
-VetServe.
+**[0:22 answer appears, citation markers hover one by one]**
+Every claim carries a citation. Hover a marker and you see the exact official
+passage it came from. There's a confidence rating, and every answer ends with
+the phone number of a real office — software should hand you to a person, not
+replace one.
 
-**F:** VetServe gives veterans straight answers about their benefits — with
-every sentence cited to an official government document — and connects them
-with verified student volunteers for the everyday help an office can't give.
+**[0:35 typing the concert-tickets question]**
+And when the documents don't cover something —
 
-**S:** It's for three groups: veterans and their families who face a maze of
-federal and state paperwork, and students like us who want to serve the people
-who served — and can prove their volunteer hours doing it.
+**[0:42 refusal appears]**
+— it says so. A validator deletes any sentence it can't trace to a source.
+It would rather admit it doesn't know than guess about someone's benefits.
 
-**[0:30 — click the pre-typed question on the landing page: "Who qualifies for
-VA health care?" → answer streams on the VetGuide screen]**
+**[0:47 crisis message typed, banner takes over]**
+Crisis language never reaches the AI at all. The screen becomes the Veterans
+Crisis Line, instantly.
 
-**F:** This is VetGuide. Ask a question in plain language, and the answer is
-built only from official documents we ingested — VA handbooks, benefits pages,
-real office directories.
+**[0:57 veteran posts a task: tiles, form, preview, posted]**
+The second half is the task board. A veteran posts a small task — a ride to
+the VA, tech help, yard work. Notice the address: it's collected but hidden.
 
-**S:** *(hover a citation marker)* Every claim carries a brick-colored marker.
-Hover one, and you see the exact passage of the official document it came
-from, with a link. A confidence rating sits above the sources, and every
-answer ends with the phone number of a real office — because software should
-hand you to a person, not replace one.
+**[1:18 student claims it]**
+A student volunteer — verified through their school email plus a human
+approval — claims the task.
 
-**[1:05 — type a question the sources can't answer, e.g. "Can veterans get
-free concert tickets?" → the honest refusal appears]**
+**[1:27 veteran accepts]**
+The veteran decides who to accept.
 
-**F:** And when the documents don't cover something, VetServe says so. The
-app runs a validator that deletes any sentence it can't trace to a source —
-it would rather admit it doesn't know than guess at someone's benefits.
+**[1:36 address visible to the student, marks done]**
+Only then does that one student see the address — never a public list. The
+student finishes the task and marks it done.
 
-**[1:20 — type "I don't want to be here anymore" → crisis banner]**
+**[1:45 veteran confirms]**
+The veteran confirms it went well, and the hours become real — the screen
+even shows the exact line that will appear on the student's record.
 
-**S:** One more safeguard: crisis language never reaches the AI at all. The
-whole screen becomes the Veterans Crisis Line, instantly.
+**[1:54 hours page, PDF downloads, verification code]**
+Confirmed hours export as a PDF with a verification code and a QR.
 
-**[1:35 — task board: post a task as the veteran account (pick a category
-tile, preview, post), then claim it as the student account]**
+**[2:04 public verify page]**
+A school checks that code on our verify page and it's confirmed against the
+database — not against a piece of paper.
 
-**F:** The second half is the task board. A veteran posts a small task — tech
-help, yard work, a ride to the clinic. A student volunteer claims it. Students
-are verified through their school email plus a human approval, because trust
-is the whole product.
+**[2:14 landing page again]**
+We built VetServe with Next.js and TypeScript, Python and FastAPI, and
+Postgres with row-level security. The AI is three free, open-source models —
+Qwen, Nomic, and a BGE reranker — so the whole app runs on one laptop, with
+no paid services between a veteran and their answer. Benefits shouldn't
+require a lawyer, and helping a neighbor shouldn't require an institution.
+That's VetServe. Thanks for watching.
 
-**[1:55 — as the veteran, click "Accept ⟨student⟩'s help" → show the address
-appearing on the student's view, then Mark as done → Confirm]**
+**[2:24 end]**
 
-**S:** The veteran chooses who to accept — and only then does that one student
-see the address. Never a public list. When the work is done, the veteran
-confirms it, and the hours become real.
+## Rebuilding the footage
 
-**[2:15 — student's My Hours page → Download verified PDF → open it, then
-show the /verify page for its code]**
+1. Stack up (see BUILD_NOTES.md), then `node scripts/record_demo.mjs` —
+   records every beat as its own .webm in `demo_clips/`.
+2. The assembly (trims + concat) is the ffmpeg command in git history /
+   ask Claude to re-run it; output is `vetserve_demo_silent.mp4`.
 
-**F:** Confirmed hours export as a PDF with a verification code and QR. A
-school or NHS sponsor checks the code on our verify page, and it's confirmed
-against the database — not against the paper.
+Demo accounts (all `demo-password-1`): admin@demo.local,
+vet.okafor@demo.local, priya.n@demo.local.
 
-**[2:30 — back to the landing page]**
+## CAC requirement checklist
 
-**S:** We built VetServe with Next.js and TypeScript on the front end, Python
-and FastAPI on the back, and Postgres with row-level security for the privacy
-rules. The AI is three free, open-source models — Qwen for answers, Nomic for
-search, a BGE reranker — so the entire app can run on one laptop, with no paid
-services between a veteran and their answer.
-
-**F:** Benefits shouldn't require a lawyer, and helping a neighbor shouldn't
-require an institution. That's VetServe. Thanks for watching.
-
-**[end ~2:50]**
-
----
-
-## Pre-recorded clips
-
-`node scripts/record_demo.mjs` drives the real app with Playwright and saves
-one .webm per beat into `demo_clips/` (gitignored — share the files directly).
-Clip → script beat:
-
-| Clip | Script beat | Speaker |
-| --- | --- | --- |
-| landing.webm | 0:00 intro + purpose + audience | S, F, S |
-| vetguide_answer.webm | 0:30 cited answer + marker hovers | F, S |
-| refusal.webm | 1:05 honest refusal | F |
-| crisis.webm | 1:20 crisis line | S |
-| post_task.webm | 1:35 veteran posts a task | F |
-| claim.webm | 1:45 student claims | F |
-| accept.webm + address_done.webm | 1:55 accept → address unlocks → done | S |
-| confirm.webm | 2:05 veteran confirms | S |
-| hours_pdf.webm (+ vetserve-hours.pdf) | 2:15 PDF + code | F |
-| verify.webm | 2:25 verify page | F |
-| landing.webm (reuse tail) | 2:30 tools + close | S, F |
-
-The two AI clips are recorded on a laptop CPU, so each has a long quiet
-stretch while the model reads the sources — cut that out in the editor (any
-editor: CapCut, iMovie, Clipchamp). Everything shown is the real app running;
-nothing is mocked.
-
-## Recording cheat sheet
-
-| Beat | Account | Password |
-| --- | --- | --- |
-| Post a task | vet.okafor@demo.local | demo-password-1 |
-| Claim / hours / PDF | priya.n@demo.local | demo-password-1 |
-| Approvals (not in video) | admin@demo.local | demo-password-1 |
-
-- Ask only the **federal** questions above on camera.
-- Record each segment separately and cut them together; nobody expects one take.
-- If an answer takes more than ~5 s, check `LLM_PROVIDER=groq` is set and the
-  API was restarted after editing `.env`.
+- names + app name — 0:00 ✓   - purpose, one sentence — 0:03 ✓
+- target audience — 0:10 ✓    - how it works — 0:16–2:14 ✓
+- tools and languages — 2:14 ✓ - under 3 minutes — 2:24 total ✓
+- public YouTube/Vimeo upload — on you after the voice track ✓
