@@ -26,8 +26,8 @@ the people who served.
 
 **[0:16 question asked, "Searching official documents"]**
 **S:** This is VetGuide. You ask in plain language, and it searches only
-official documents we ingested — VA handbooks, benefits pages, real office
-directories.
+official documents we ingested: handbooks and benefits pages from the
+Department of Veterans Affairs, and real office directories.
 
 **[0:22 answer appears, citation markers hover one by one]**
 **S:** Every claim carries a citation. Hover a marker and you see the exact
