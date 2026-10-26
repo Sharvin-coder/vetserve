@@ -13,16 +13,16 @@ the audio file back to Claude to merge.
 
 ## Narration — timed to the reel (2:24)
 
-**S** = Sharvin (most lines) · **T** = Tharun (four short lines)
+**T** = Tharun (intro only) · **S** = Sharvin (everything after)
 
 **[0:00 landing page scrolls]**
 **S:** I'm Sharvin Goyal —
-**T:** — and I'm Tharun ⟨last name⟩, and this is VetServe.
-**S:** VetServe gives veterans straight answers about their benefits — with
-every sentence cited to an official government document — and connects them
-with verified student volunteers for everyday help. It's for veterans and
-their families lost in benefits paperwork, and for students who want to serve
-the people who served.
+**T:** — and I'm Tharun ⟨last name⟩, and this is VetServe. VetServe gives
+veterans straight answers about their benefits — with every sentence cited to
+an official government document — and connects them with verified student
+volunteers for everyday help.
+**S:** It's for veterans and their families lost in benefits paperwork, and
+for students who want to serve the people who served.
 
 **[0:16 question asked, "Searching official documents"]**
 **S:** This is VetGuide. You ask in plain language, and it searches only
@@ -44,7 +44,7 @@ source. It would rather admit it doesn't know than guess about someone's
 benefits.
 
 **[0:47 crisis message typed, banner takes over]**
-**T:** Crisis language never reaches the AI at all. The screen becomes the
+**S:** Crisis language never reaches the AI at all. The screen becomes the
 Veterans Crisis Line, instantly.
 
 **[0:57 veteran posts a task: tiles, form, preview, posted]**
@@ -53,7 +53,7 @@ ride to the VA, tech help, yard work. Notice the address: it's collected but
 hidden.
 
 **[1:18 student claims it]**
-**T:** A student volunteer — verified through their school email plus a human
+**S:** A student volunteer — verified through their school email plus a human
 approval — claims the task.
 
 **[1:27 veteran accepts]**
@@ -71,7 +71,7 @@ screen even shows the exact line that will appear on the student's record.
 **S:** Confirmed hours export as a PDF with a verification code and a QR.
 
 **[2:04 public verify page]**
-**T:** A school checks that code on our verify page, and it's confirmed
+**S:** A school checks that code on our verify page, and it's confirmed
 against the database — not against a piece of paper.
 
 **[2:14 landing page again]**
@@ -79,7 +79,7 @@ against the database — not against a piece of paper.
 Postgres with row-level security. The AI is three free, open-source models —
 Qwen, Nomic, and a BGE reranker — so it all runs on one laptop, with no paid
 services between a veteran and their answer.
-**T:** Veterans have served our country. Now it's our turn to serve them —
+**S:** Veterans have served our country. Now it's our turn to serve them —
 with VetServe. Thanks for watching.
 
 **[2:24 end]**
