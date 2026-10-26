@@ -22,3 +22,6 @@ api/.venv/
 .DS_Store
 Thumbs.db
 *.log
+
+# demo recordings
+demo_clips/

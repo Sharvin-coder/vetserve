@@ -88,6 +88,31 @@ require an institution. That's VetServe. Thanks for watching.
 
 ---
 
+## Pre-recorded clips
+
+`node scripts/record_demo.mjs` drives the real app with Playwright and saves
+one .webm per beat into `demo_clips/` (gitignored — share the files directly).
+Clip → script beat:
+
+| Clip | Script beat | Speaker |
+| --- | --- | --- |
+| landing.webm | 0:00 intro + purpose + audience | S, F, S |
+| vetguide_answer.webm | 0:30 cited answer + marker hovers | F, S |
+| refusal.webm | 1:05 honest refusal | F |
+| crisis.webm | 1:20 crisis line | S |
+| post_task.webm | 1:35 veteran posts a task | F |
+| claim.webm | 1:45 student claims | F |
+| accept.webm + address_done.webm | 1:55 accept → address unlocks → done | S |
+| confirm.webm | 2:05 veteran confirms | S |
+| hours_pdf.webm (+ vetserve-hours.pdf) | 2:15 PDF + code | F |
+| verify.webm | 2:25 verify page | F |
+| landing.webm (reuse tail) | 2:30 tools + close | S, F |
+
+The two AI clips are recorded on a laptop CPU, so each has a long quiet
+stretch while the model reads the sources — cut that out in the editor (any
+editor: CapCut, iMovie, Clipchamp). Everything shown is the real app running;
+nothing is mocked.
+
 ## Recording cheat sheet
 
 | Beat | Account | Password |
