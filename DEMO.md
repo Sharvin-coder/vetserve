@@ -17,7 +17,7 @@ the audio file back to Claude to merge.
 
 **[0:00 landing page scrolls]**
 **S:** I'm Sharvin Goyal —
-**T:** — and I'm Tharun ⟨last name⟩, and this is VetServe.
+**T:** — and I'm Tharun. We'd like to present our app, VetServe.
 **S:** VetServe gives veterans straight answers about their benefits — with
 every sentence cited to an official government document — and connects them
 with verified student volunteers for everyday help. It's for veterans and
