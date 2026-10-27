@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VetServe</title>
+<meta name="description" content="Straight answers about veterans' benefits, cited to official documents — and verified student volunteers for the rest. Congressional App Challenge 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F5F0; --surface:#FFFFFF; --ink:#1C2321; --ink-muted:#5B625F;
+    --line:#D9D5CC; --primary:#1F4E5F; --accent:#B5542A;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font:17px/1.6 Inter,system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  header{padding:72px 0 48px;text-align:center}
+  .eyebrow{color:var(--accent);font-weight:600;font-size:14px;letter-spacing:.08em;
+           text-transform:uppercase}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(40px,7vw,64px);
+     margin:10px 0 18px}
+  .tagline{font-family:Fraunces,Georgia,serif;font-size:clamp(20px,3.4vw,28px);font-weight:500;
+           max-width:34ch;margin:0 auto;line-height:1.35}
+  .sub{color:var(--ink-muted);max-width:58ch;margin:18px auto 0}
+  .video{margin:44px auto 0;max-width:820px;border:1px solid var(--line);border-radius:12px;
+         overflow:hidden;background:#000;aspect-ratio:16/10}
+  .video iframe{width:100%;height:100%;border:0;display:block}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-block;padding:13px 22px;border-radius:6px;text-decoration:none;
+       font-weight:600;font-size:16px}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-ghost{color:var(--primary);border:1px solid var(--primary)}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:28px;margin-bottom:10px}
+  .lede{color:var(--ink-muted);max-width:62ch}
+  .cols{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+        margin-top:30px}
+  .card{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+        border-radius:10px;padding:22px}
+  .card h3{font-family:Fraunces,Georgia,serif;font-size:20px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:16px;color:var(--ink-muted)}
+  ul.flow{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+  ul.flow li{background:var(--surface);border:1px solid var(--line);border-radius:10px;
+             padding:14px 18px;font-size:16px}
+  ul.flow b{color:var(--primary)}
+  .tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;
+        padding:7px 15px;font-size:14px;font-weight:500}
+  footer{border-top:1px solid var(--line);padding:40px 0 64px;color:var(--ink-muted);
+         font-size:14px;text-align:center}
+  footer a{color:var(--primary)}
+  .crisis{margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Congressional App Challenge 2026 · GA-10</p>
+  <h1>VetServe</h1>
+  <p class="tagline">Straight answers about benefits, and neighbors who&rsquo;ll help with the rest.</p>
+  <p class="sub">Built by Sharvin Goyal and Tharun — a web app that answers veterans&rsquo;
+     benefits questions using only official government documents, with every sentence cited,
+     and connects veterans with verified student volunteers for everyday help.</p>
+
+  <div class="video">
+    <iframe src="https://www.youtube.com/embed/tSQPyqo261c"
+            title="VetServe — demonstration video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+  </div>
+
+  <div class="btns">
+    <a class="btn btn-primary" href="https://github.com/Sharvin-coder/vetserve">Source code on GitHub</a>
+    <a class="btn btn-ghost" href="https://github.com/Sharvin-coder/vetserve#local-setup">Run it locally</a>
+  </div>
+</header>
+
+<section>
+  <h2>Two halves, one community</h2>
+  <p class="lede">Veterans face a maze of federal and state benefits — and the everyday tasks
+     that pile up around them. Students want to serve, but service hours often turn into
+     busywork. VetServe connects the two.</p>
+  <div class="cols">
+    <div class="card">
+      <h3>VetGuide</h3>
+      <p>Ask about eligibility, disability claims, health care, or education benefits in plain
+         language. Answers are built only from official documents — VA handbooks, benefits
+         pages, real office directories — and every sentence carries an inline citation that
+         expands to the exact source passage.</p>
+    </div>
+    <div class="card">
+      <h3>The task board</h3>
+      <p>Veterans post small tasks — a ride to the VA clinic, help with a phone, yard work.
+         School-verified student volunteers claim them, the veteran chooses whom to accept,
+         and confirmed help becomes service hours a school can verify with one code.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Built to not make things up</h2>
+  <p class="lede">A wrong answer about benefits isn&rsquo;t a typo — it&rsquo;s someone&rsquo;s
+     health care. So trust is engineered in, not promised:</p>
+  <ul class="flow">
+    <li><b>Citation validator.</b> After every answer, a validator deletes any sentence it
+        cannot trace to a retrieved official passage — and logs what it removed.</li>
+    <li><b>Honest refusals.</b> If the documents don&rsquo;t cover a question, VetServe says
+        so and shows the phone number of a real office instead of guessing.</li>
+    <li><b>Crisis handling.</b> Language that sounds like a crisis never reaches the AI;
+        the screen immediately becomes the Veterans Crisis Line (988, press 1).</li>
+    <li><b>Privacy in the database.</b> A veteran&rsquo;s address is visible to exactly one
+        accepted volunteer — enforced by row-level security, not interface rules.</li>
+    <li><b>Verifiable hours.</b> Service-hour PDFs carry a code and QR that resolve against
+        the database, so the paper can&rsquo;t be forged.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>How it&rsquo;s built</h2>
+  <p class="lede">Free and open source end to end — no paid services between a veteran and
+     their answer. The whole stack runs on one laptop.</p>
+  <div class="tech">
+    <span class="chip">Next.js + TypeScript</span>
+    <span class="chip">Python + FastAPI</span>
+    <span class="chip">Postgres + row-level security (Supabase)</span>
+    <span class="chip">Qwen 2.5 7B</span>
+    <span class="chip">nomic-embed-text</span>
+    <span class="chip">BGE reranker</span>
+    <span class="chip">Hybrid retrieval + rerank (93% top-3 on our eval)</span>
+    <span class="chip">Lighthouse accessibility 100</span>
+  </div>
+</section>
+
+<footer>
+  <p>A student-built community project — not a government service, and not official advice.</p>
+  <p class="crisis">Veterans Crisis Line: call <a href="tel:988">988</a> then press 1,
+     or text <a href="sms:838255">838255</a>. Free and confidential, 24/7.</p>
+</footer>
+
+</div>
+</body>
+</html>
