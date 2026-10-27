@@ -32,7 +32,7 @@ const SOURCES = [
 
 export default function LandingPage() {
   const router = useRouter();
-  const [question, setQuestion] = useState("Am I eligible for the Hazlewood Act?");
+  const [question, setQuestion] = useState("Who qualifies for VA health care?");
   const [tasks, setTasks] = useState<PublicTask[]>([]);
 
   useEffect(() => {
@@ -114,8 +114,8 @@ export default function LandingPage() {
           <div>
             <h2 className="font-display text-lg font-medium">VetGuide</h2>
             <p className="mt-2 max-w-measure text-base text-ink-muted">
-              Ask a question in plain language — eligibility, disability claims, the Hazlewood Act,
-              property taxes. Every sentence of the answer carries a citation to the exact official
+              Ask a question in plain language — eligibility, disability claims, health care
+              enrollment, education benefits. Every sentence of the answer carries a citation to the exact official
               passage it came from, and when the documents don&rsquo;t cover it, VetGuide says so
               and hands you a real phone number instead of guessing.
             </p>
@@ -123,7 +123,7 @@ export default function LandingPage() {
           <div>
             <h2 className="font-display text-lg font-medium">The task board</h2>
             <p className="mt-2 max-w-measure text-base text-ink-muted">
-              Veterans post small tasks — setting up a phone, yard work, a ride to the Katy VA
+              Veterans post small tasks — setting up a phone, yard work, a ride to the VA
               clinic. Verified student volunteers claim them, the veteran approves, and confirmed
               help becomes service hours students can prove to their school with one code.
             </p>

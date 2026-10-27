@@ -64,5 +64,5 @@ echo "silent reel rebuilt: $(dur vetserve_demo_silent.mp4)s"
 [r8]atrim=48.50:67.10,asetpts=PTS-STARTPTS,adelay=140500:all=1[p8];\
 [va][vb][vc][vd][ve]concat=n=5:v=1:a=0[vfinal];\
 [aa][ab][ac][p1][p2][p3][p4][p5][p6][p7][p8][ae]amix=inputs=12:normalize=0:dropout_transition=0,alimiter=limit=0.95[afinal]" \
- -map "[vfinal]" -map "[afinal]" -c:v libx264 -crf 20 -preset fast -c:a aac -b:a 192k vetserve_demo_final_ga.mp4 2>/dev/null
+ -map "[vfinal]" -map "[afinal]" -t 174.5 -c:v libx264 -crf 20 -preset fast -c:a aac -b:a 192k vetserve_demo_final_ga.mp4 2>/dev/null
 echo "FINAL: $(dur vetserve_demo_final_ga.mp4)s -> demo_clips/vetserve_demo_final_ga.mp4"
