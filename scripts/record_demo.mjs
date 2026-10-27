@@ -157,11 +157,11 @@ const CLIPS = {
       page.getByLabel("Any details? (optional)"),
       "Appointment at 10:30. Takes about an hour.",
     );
-    await slowType(page, page.getByLabel("ZIP code"), "77450");
+    await slowType(page, page.getByLabel("ZIP code"), "30606");
     const hours = page.getByLabel("About how many hours?");
     await hours.fill("");
     await slowType(page, hours, "2");
-    await slowType(page, page.getByLabel("Address (optional)"), "88 Demo Court, Katy TX");
+    await slowType(page, page.getByLabel("Address (optional)"), "88 Demo Court, Athens GA");
     await sleep(800);
     await page.getByRole("button", { name: "Preview task" }).click();
     await page.getByText("This is what students will see.").waitFor();

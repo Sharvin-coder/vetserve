@@ -20,15 +20,14 @@ interface PublicTask {
 }
 
 const OFFICES = [
-  { org: "Fort Bend County Veterans Service Office", phone: "281-341-4550" },
-  { org: "Texas Veterans Commission", phone: "800-252-8387" },
-  { org: "Katy VA Clinic", phone: "281-578-4600" },
+  { org: "Georgia Department of Veterans Service", phone: "404-656-2300" },
+  { org: "Athens VA Clinic", phone: "706-733-0188" },
+  { org: "VA Benefits Hotline", phone: "800-827-1000" },
 ];
 
 const SOURCES = [
   { label: "VA.gov — federal benefits, health care, education", url: "https://www.va.gov" },
-  { label: "Texas Veterans Commission", url: "https://tvc.texas.gov" },
-  { label: "Fort Bend County Veterans Service Office", url: "https://www.fortbendcountytx.gov/government/departments/commissioners-court/county-judge/veteran-service-office" },
+  { label: "Official state and county veterans offices", url: "https://www.va.gov/statedva.htm" },
 ];
 
 export default function LandingPage() {

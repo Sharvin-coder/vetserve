@@ -12,12 +12,12 @@ import { SourceCard } from "@/components/ui/SourceCard";
 import { askOnce, askStreaming, type Citation } from "@/lib/ask";
 
 const STARTERS = [
-  "Am I eligible for the Hazlewood Act?",
+  "Am I eligible for VA disability compensation?",
   "How do I file a VA disability claim?",
   "Who qualifies for VA health care?",
   "What does the GI Bill cover?",
-  "Do disabled veterans get a property tax break in Texas?",
-  "What are the hours of the Katy VA clinic?",
+  "What disability benefits can I get?",
+  "How do I enroll in VA health care?",
 ];
 
 function GuideInner() {
@@ -97,7 +97,7 @@ function GuideInner() {
         <header className="border-b border-line pb-4">
           <h1 className="font-display text-xl font-medium">VetGuide</h1>
           <p className="mt-1 max-w-measure text-ui text-ink-muted">
-            Answers from official VA and Texas documents, with sources.
+            Answers from official government documents, with sources.
           </p>
         </header>
 

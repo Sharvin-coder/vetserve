@@ -4,19 +4,15 @@
 // simply show no distance.
 
 const ZIP_CENTROIDS: Record<string, [number, number]> = {
-  "77406": [29.65, -95.8], // Richmond
-  "77407": [29.66, -95.71], // Richmond E
-  "77423": [29.78, -95.95], // Brookshire
-  "77441": [29.69, -95.9], // Fulshear
-  "77450": [29.75, -95.73], // Katy / Cinco Ranch
-  "77469": [29.56, -95.72], // Richmond / Rosenberg
-  "77471": [29.55, -95.82], // Rosenberg
-  "77478": [29.62, -95.6], // Sugar Land
-  "77479": [29.57, -95.63], // Sugar Land S
-  "77485": [29.63, -96.06], // Wallis
-  "77493": [29.85, -95.83], // Katy N
-  "77494": [29.74, -95.83], // Katy SW
-  "77498": [29.65, -95.66], // Sugar Land W
+  "30601": [33.96, -83.32], // Athens NE
+  "30605": [33.9, -83.32], // Athens SE
+  "30606": [33.93, -83.44], // Athens W
+  "30607": [34.02, -83.44], // Athens NW
+  "30549": [34.11, -83.59], // Jefferson
+  "30622": [33.92, -83.53], // Bogart
+  "30655": [33.78, -83.7], // Monroe
+  "30677": [33.84, -83.43], // Watkinsville
+  "30680": [33.99, -83.72], // Winder
 };
 
 export function roughMilesBetween(zipA?: string | null, zipB?: string | null): number | null {

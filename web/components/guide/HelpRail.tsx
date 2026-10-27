@@ -2,9 +2,9 @@
 // set the API serves; tel: links at 20px for older eyes and tremor.
 
 const PEOPLE = [
-  { org: "Fort Bend County VSO", phone: "281-341-4550", note: "Benefits help, free" },
-  { org: "Texas Veterans Commission", phone: "800-252-8387", note: "State benefits and claims" },
-  { org: "Katy VA Clinic", phone: "281-578-4600", note: "Mon–Fri 8:00–4:30" },
+  { org: "Georgia Dept. of Veterans Service", phone: "404-656-2300", note: "State benefits and claims, free" },
+  { org: "Athens VA Clinic", phone: "706-733-0188", note: "VA health care" },
+  { org: "VA Benefits Hotline", phone: "800-827-1000", note: "Federal benefits questions" },
 ];
 
 export function HelpRail() {

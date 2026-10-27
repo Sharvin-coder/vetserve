@@ -1,42 +1,35 @@
-"""The "talk to a person" directory. Every number was pulled from the
-official source page listed alongside it (see sources.json) — never edit
+"""The "talk to a person" directory (GA-10 / Athens-area pilot). Every number
+was pulled from the official source page listed alongside it — never edit
 these by memory; re-verify against the page."""
 
 OFFICES = {
-    "fort_bend_vso": {
-        "org": "Fort Bend County Veterans Service Office",
-        "phone": "281-341-4550",
-        "hours": "Rosenberg office — call for hours",
-        "source": "https://www.fortbendcountytx.gov/government/departments/commissioners-court/county-judge/veteran-service-office/contact-us",
+    "gdvs": {
+        "org": "Georgia Department of Veterans Service",
+        "phone": "404-656-2300",
+        "hours": "State benefits and claims help, free",
+        "source": "https://veterans.georgia.gov/",
     },
-    "tvc": {
-        "org": "Texas Veterans Commission",
-        "phone": "800-252-8387",
-        "hours": "Mon–Fri business hours",
-        "source": "https://tvc.texas.gov/claims/",
+    "athens_clinic": {
+        "org": "Athens VA Clinic",
+        "phone": "706-733-0188",
+        "hours": "VA health care, Athens",
+        "source": "https://www.va.gov/augusta-health-care/locations/athens-va-clinic/",
     },
-    "katy_clinic": {
-        "org": "Katy VA Clinic",
-        "phone": "281-578-4600",
-        "hours": "Mon–Fri 8:00 a.m.–4:30 p.m.",
-        "source": "https://www.va.gov/houston-health-care/locations/katy-va-clinic/",
-    },
-    "debakey": {
-        "org": "Michael E. DeBakey VA Medical Center",
-        "phone": "713-791-1414",
-        "hours": "Open 24/7",
-        "source": "https://www.va.gov/houston-health-care/locations/michael-e-debakey-department-of-veterans-affairs-medical-center/",
+    "va_hotline": {
+        "org": "VA Benefits Hotline",
+        "phone": "800-827-1000",
+        "hours": "Mon-Fri 8:00 a.m.-9:00 p.m. ET",
+        "source": "https://www.va.gov/contact-us/",
     },
 }
 
 _TOPIC_RULES: list[tuple[tuple[str, ...], str]] = [
-    (("hazlewood", "property tax", "tuition", "employment preference", "texas"), "tvc"),
+    (("property tax", "tuition", "state", "georgia", "employment preference"), "gdvs"),
     (
         ("health care", "clinic", "enroll", "priority group", "appointment", "medical"),
-        "katy_clinic",
+        "athens_clinic",
     ),
-    (("hospital", "emergency", "debakey"), "debakey"),
-    # claims, disability, and everything else → the county office that helps file
+    # claims, disability, and everything else → the federal benefits hotline
 ]
 
 
@@ -47,8 +40,6 @@ def pick_office(question: str, source_urls: list[str]) -> dict:
         if any(k in q for k in keywords):
             return OFFICES[key]
     joined = " ".join(source_urls)
-    if "tvc.texas.gov" in joined:
-        return OFFICES["tvc"]
-    if "houston-health-care" in joined:
-        return OFFICES["katy_clinic"]
-    return OFFICES["fort_bend_vso"]
+    if "health-care" in joined or "houston-health-care" in joined:
+        return OFFICES["athens_clinic"]
+    return OFFICES["va_hotline"]
