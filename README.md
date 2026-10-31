@@ -2,8 +2,9 @@
 
 Straight answers about veterans' benefits from official government documents —
 with sources — and a task board that connects local veterans with verified
-student volunteers. Built for the 2026 Congressional App Challenge; the current
-corpus and office directory pilot in Fort Bend County, Texas.
+student volunteers. Built for the 2026 Congressional App Challenge. The corpus is a set of
+official federal and state benefits documents, and the office directory is
+configured for the Athens, Georgia area.
 
 Two halves, one audience:
 
@@ -12,7 +13,7 @@ Two halves, one audience:
   carries an inline citation you can expand to the exact source passage. If the
   sources don't cover it, VetGuide says so and points you to a person who can help.
 - **Task Board** — verified veterans post small tasks (tech help, yard work, a ride
-  to the Katy VA clinic); verified student volunteers claim them, complete them, and
+  to the VA clinic); verified student volunteers claim them, complete them, and
   export a verified PDF of service hours for NHS or school.
 
 Everything runs locally and free: Ollama for the language model and embeddings,
@@ -176,8 +177,8 @@ skipped even by a hand-crafted PostgREST request.
    nothing unverified persists on screen.
 5. **Confidence + handoff.** Low rerank scores replace the answer with "I
    couldn't find this in official sources" and every answer ends with the
-   phone number of the relevant office (Fort Bend VSO, TVC, Katy VA clinic —
-   all verified against the official pages, see `sources.json`).
+   phone number of the relevant office (Georgia Dept. of Veterans Service,
+   Athens VA clinic, VA benefits hotline — all verified against official pages).
 
 ## Model choices
 

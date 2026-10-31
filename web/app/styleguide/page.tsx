@@ -91,7 +91,7 @@ export default function Styleguide() {
             defaultValue="not-an-email"
             error="That doesn't look like an email address. Check for a typo."
           />
-          <Input label="School" disabled value="Katy High School" readOnly />
+          <Input label="School" disabled value="Clarke Central High School" readOnly />
           <Textarea
             label="What do you need help with?"
             hint="A sentence or two is plenty."
@@ -188,9 +188,9 @@ export default function Styleguide() {
 
       <Section title="Empty state">
         <EmptyState
-          title="No tasks near 77494 yet."
+          title="No tasks near 30606 yet."
           body="Tasks from your neighbors will show up here."
-          action={<Button variant="secondary">Widen to all of Fort Bend</Button>}
+          action={<Button variant="secondary">Show all open tasks</Button>}
         />
       </Section>
 
@@ -283,7 +283,7 @@ export default function Styleguide() {
             </tr>
             <tr>
               <Td className="tnum">06/11/2026</Td>
-              <Td>Ride to Katy VA clinic</Td>
+              <Td>Ride to the VA clinic</Td>
               <Td>R. Okafor</Td>
               <Td className="tnum text-right">2.0</Td>
             </tr>

@@ -17,35 +17,35 @@ from supabase import create_client  # noqa: E402
 PASSWORD = "demo-password-1"
 
 VETERANS = [
-    ("vet.alvarez@demo.local", "J. Alvarez", "77494"),
-    ("vet.okafor@demo.local", "R. Okafor", "77450"),
-    ("vet.nguyen@demo.local", "T. Nguyen", "77406"),
+    ("vet.alvarez@demo.local", "J. Alvarez", "30606"),
+    ("vet.okafor@demo.local", "R. Okafor", "30601"),
+    ("vet.nguyen@demo.local", "T. Nguyen", "30677"),
 ]
 STUDENTS = [
-    ("priya.n@demo.local", "Priya N.", "77494", "Katy High School"),
-    ("marcus.j@demo.local", "Marcus J.", "77450", "Seven Lakes High School"),
-    ("elena.r@demo.local", "Elena R.", "77406", "Tompkins High School"),
+    ("priya.n@demo.local", "Priya N.", "30606", "Clarke Central High School"),
+    ("marcus.j@demo.local", "Marcus J.", "30601", "Cedar Shoals High School"),
+    ("elena.r@demo.local", "Elena R.", "30677", "Oconee County High School"),
 ]
-ADMIN = ("admin@demo.local", "VetServe Admin", "77494")
+ADMIN = ("admin@demo.local", "VetServe Admin", "30606")
 
 # (veteran idx, student idx or None, target status, title, category, zip, hours, description)
 TASKS = [
-    (0, None, "open", "Set up my new Android phone", "tech_help", "77494", 1.5,
+    (0, None, "open", "Set up my new Android phone", "tech_help", "30606", 1.5,
      "New phone, old phone, and none of my contacts made the jump."),
-    (0, None, "open", "Move boxes down from the attic", "yard", "77494", 2.0,
+    (0, None, "open", "Move boxes down from the attic", "yard", "30606", 2.0,
      "About ten boxes, nothing too heavy."),
-    (1, None, "open", "Ride to the Katy VA clinic on Thursday", "ride", "77450", 2.0,
+    (1, None, "open", "Ride to the VA clinic on Thursday", "ride", "30601", 2.0,
      "Appointment at 10:30, takes about an hour."),
-    (2, None, "open", "Help filling out a property tax exemption form", "paperwork", "77406", 1.0,
+    (2, None, "open", "Help filling out a property tax exemption form", "paperwork", "30677", 1.0,
      "I have my disability letter; the county form is confusing."),
-    (1, 0, "claimed", "Printer won't connect to laptop", "tech_help", "77450", 1.0,
+    (1, 0, "claimed", "Printer won't connect to laptop", "tech_help", "30601", 1.0,
      "It worked before the last Windows update."),
-    (2, 1, "claimed", "Trim the front hedges", "yard", "77406", 2.5, ""),
-    (0, 1, "accepted", "Weekly grocery run", "errand", "77494", 1.5,
+    (2, 1, "claimed", "Trim the front hedges", "yard", "30677", 2.5, ""),
+    (0, 1, "accepted", "Weekly grocery run", "errand", "30606", 1.5,
      "List is short — mostly the same staples every week."),
-    (2, 2, "accepted", "Teach me video calls so I can see my grandkids", "tech_help", "77406", 1.5, ""),
-    (1, 2, "done", "Rake and bag the back yard", "yard", "77450", 3.0, ""),
-    (0, 0, "confirmed", "Set up tablet for VA telehealth", "tech_help", "77494", 2.0,
+    (2, 2, "accepted", "Teach me video calls so I can see my grandkids", "tech_help", "30677", 1.5, ""),
+    (1, 2, "done", "Rake and bag the back yard", "yard", "30601", 3.0, ""),
+    (0, 0, "confirmed", "Set up tablet for VA telehealth", "tech_help", "30606", 2.0,
      "The clinic wants me to use video appointments."),
 ]
 
@@ -109,7 +109,7 @@ def main() -> int:
                 "p_category": category,
                 "p_description": desc,
                 "p_zip": zip_code,
-                "p_address": f"{100 + made} Demo Street, Katy TX",
+                "p_address": f"{100 + made} Demo Street, Athens GA",
                 "p_est_hours": hours,
             },
         ).execute().data

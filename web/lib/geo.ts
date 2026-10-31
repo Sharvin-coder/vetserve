@@ -1,5 +1,5 @@
 // Rough distance between local ZIP codes, for the "~4 mi" hint on task
-// cards. Approximate centroids of Fort Bend / Katy-area ZIPs — good to a
+// cards. Approximate centroids of Athens-area (GA-10) ZIPs — good to a
 // couple of miles, which is why the UI always says "about". Unknown ZIPs
 // simply show no distance.
 

@@ -122,11 +122,11 @@ function OpenTasks() {
       ) : tasks.length === 0 ? (
         <EmptyState
           title={zip ? `No open tasks near ${zip} yet.` : "No open tasks right now."}
-          body={zip ? "Widen the search to all of Fort Bend?" : "Check back soon — new tasks appear here."}
+          body={zip ? "Widen the search to nearby ZIP codes?" : "Check back soon — new tasks appear here."}
           action={
             zip ? (
               <Button variant="secondary" onClick={() => setZip("")}>
-                Show all of Fort Bend
+                Show all open tasks
               </Button>
             ) : undefined
           }

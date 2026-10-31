@@ -56,10 +56,6 @@
     "expected_url": "https://tvc.texas.gov/veterans-employment-preference/"
   },
   {
-    "question": "What are the hours of the Katy VA clinic?",
-    "expected_url": "https://www.va.gov/houston-health-care/locations/katy-va-clinic/"
-  },
-  {
     "question": "Am I eligible for the hazelwood act?",
     "expected_url": "https://tvc.texas.gov/education/hazlewood/"
   },

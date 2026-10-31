@@ -25,3 +25,7 @@ Thumbs.db
 
 # demo recordings
 demo_clips/
+
+# internal docs (kept local, not published)
+BUILD_NOTES.md
+DEMO.md

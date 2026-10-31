@@ -2,7 +2,7 @@
 
 Ideas that came up during the build but are outside the spec go here, not into the app.
 
-- Spanish-language VetGuide (large veteran population in Fort Bend; the
+- Spanish-language VetGuide (large local veteran population; the
   official sources exist in Spanish for many programs).
 - SMS notifications for veterans who don't check the site (Twilio-class
   service — costs money, so out for now).

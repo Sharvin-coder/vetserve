@@ -38,7 +38,7 @@ def ensure_user(admin, email: str, role: str, verified: bool):
                 "email": email,
                 "password": PASSWORD,
                 "email_confirm": True,
-                "user_metadata": {"role": role, "display_name": email.split("@")[0], "zip": "77494"},
+                "user_metadata": {"role": role, "display_name": email.split("@")[0], "zip": "30606"},
             }
         ).user.id
     admin.table("profiles").update({"verified": verified, "role": role}).eq("id", uid).execute()
